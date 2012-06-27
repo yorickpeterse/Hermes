@@ -32,6 +32,7 @@ module Hermes
       #
       # @since 2012-06-27
       # @param [Cinch::Message] message
+      # @param [String] feed The name of the feed to process.
       #
       def execute(message, feed)
         unless FEEDS.key?(feed)

@@ -6,6 +6,7 @@ require 'cinch/logger/zcbot_logger'
 $:.unshift(File.expand_path('../', __FILE__))
 
 require 'hermes/plugin/cat'
+require 'hermes/plugin/down'
 
 ##
 # Hermes is an IRC bot written to replace the "forrstdotcom" bot in the
