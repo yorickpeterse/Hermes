@@ -1,0 +1,7 @@
+cinch
+rake
+sequel
+pg
+nokogiri
+httparty
+bacon
