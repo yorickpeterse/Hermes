@@ -147,8 +147,6 @@ module Hermes
             sleep(@wait)
           end
         rescue Interrupt
-          @logger.info('Shutting down')
-
           stop
           exit
         end
@@ -282,6 +280,7 @@ module Hermes
       # @since 2012-06-28
       #
       def stop
+        @logger.info('Shutting down')
         @socket.close
       end
     end # Server
