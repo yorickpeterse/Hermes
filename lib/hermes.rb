@@ -1,10 +1,10 @@
 require 'nokogiri'
 require 'httparty'
 require 'cinch'
-require 'cinch/logger/zcbot_logger'
 
 $:.unshift(File.expand_path('../', __FILE__))
 
+require 'hermes/rpc/server'
 require 'hermes/plugin/cat'
 require 'hermes/plugin/down'
 
@@ -25,6 +25,15 @@ module Hermes
     SIGNALS = ['INT', 'QUIT']
 
     ##
+    # Instance of {Hermes::RPC::Server} that listens for commands and relays
+    # data to the IRC server.
+    #
+    # @since  2012-06-28
+    # @return [Hermes::RPC::Server]
+    #
+    attr_reader :rpc_server
+
+    ##
     # Attribute that contains the primary instance of `Cinch::Bot`.
     #
     # @since  2012-06-27
@@ -37,13 +46,20 @@ module Hermes
     end
 
     ##
-    # Starts Hermes.
+    # Starts the bot and connects to the IRC server specified in the
+    # Cinch configuration.
     #
     # @since 2012-06-27
     #
     def start
+      @rpc_server = Hermes::RPC::Server.new('tcp://*:9000')
+
       begin
-        @bot.start
+        rpc_thread = Thread.new { @rpc_server.start }
+        bot_thread = Thread.new { @bot.start }
+
+        rpc_thread.join
+        bot_thread.join
       rescue Interrupt
         stop
       end
@@ -60,6 +76,7 @@ module Hermes
     #
     def stop
       @bot.quit
+      @rpc_server.stop
     end
   end # class << self
 end # Hermes
