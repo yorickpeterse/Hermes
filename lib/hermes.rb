@@ -1,11 +1,13 @@
 require 'nokogiri'
 require 'httparty'
 require 'cinch'
+require 'json'
 
 $:.unshift(File.expand_path('../', __FILE__))
 
 require 'hermes/plugin/cat'
 require 'hermes/plugin/down'
+require 'hermes/plugin/urban_dictionary'
 
 ##
 # Hermes is an IRC bot written to replace the "forrstdotcom" bot in the

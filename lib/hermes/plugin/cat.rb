@@ -14,6 +14,10 @@ module Hermes
     class Cat
       include Cinch::Plugin
 
+      set :help => 'cat - Retrieves the latest entry of an RSS/Atom ' \
+        'feed with cat pictures and/or videos.',
+        :plugin_name => 'cat'
+
       ##
       # Hash containing the available feeds and their parsers.
       #
