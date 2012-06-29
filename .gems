@@ -1,10 +1,8 @@
+bacon
 cinch
+httparty
+nokogiri
+pg
 rake
 sequel
-pg
-nokogiri
-httparty
-bacon
 shebang
-zmq
-uuid

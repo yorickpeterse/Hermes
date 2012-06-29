@@ -8,6 +8,5 @@ require File.expand_path('../../lib/hermes', __FILE__)
 end
 
 require 'hermes/command/default'
-require 'hermes/command/node'
 
 Shebang.run

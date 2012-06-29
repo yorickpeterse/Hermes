@@ -8,13 +8,10 @@ module Hermes
     class Default < Shebang::Command
       command :default
 
-      banner 'Hermes is a multi process based IRC bot written in Ruby'
+      banner 'Hermes is a simple IRC bot written using Cinch'
       usage  '$ hermes [COMMAND] [OPTIONS]'
 
       o :h, :help, 'Shows this help message', :method => :help
-
-      #help 'Commands', "default  - Starts Hermes\n" \
-      #  "  node     - Starts a DCell node"
 
       ##
       # Runs the command.
