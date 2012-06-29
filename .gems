@@ -6,3 +6,4 @@ pg
 rake
 sequel
 shebang
+sanitize

@@ -2,12 +2,14 @@ require 'nokogiri'
 require 'httparty'
 require 'cinch'
 require 'json'
+require 'sanitize'
 
 $:.unshift(File.expand_path('../', __FILE__))
 
 require 'hermes/plugin/cat'
 require 'hermes/plugin/down'
 require 'hermes/plugin/urban_dictionary'
+require 'hermes/plugin/google'
 require 'hermes/plugin/help'
 
 ##
