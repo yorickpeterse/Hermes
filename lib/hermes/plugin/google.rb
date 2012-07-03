@@ -9,8 +9,8 @@ module Hermes
     class Google
       include Cinch::Plugin
 
-      set :help => 'g/google - Returns the first Google result | ' \
-        'gis - Returns the first result of Google images',
+      set :help => 'g/google [QUERY] - Returns the first Google result | ' \
+        'gis [QUERY] - Returns the first result of Google images',
         :plugin_name => 'google'
 
       match /gis\s+(.+)/, :method => :image_search

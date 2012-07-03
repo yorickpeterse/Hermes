@@ -8,8 +8,8 @@ module Hermes
     class UrbanDictionary
       include Cinch::Plugin
 
-      set :help => 'u/urban - Retrieves the definition of a term using ' \
-        'Urban Dictionary',
+      set :help => 'u/urban [TERM] - Retrieves the definition of a term ' \
+        'using Urban Dictionary',
         :plugin_name => 'urban'
 
       match /u\s+(\S+)/,     :method => :execute

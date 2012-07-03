@@ -8,7 +8,7 @@ module Hermes
     class Down
       include Cinch::Plugin
 
-      set :help => 'down - Checks if a website is down or not.',
+      set :help => 'down [HOST] - Checks if a website is down or not.',
         :plugin_name => 'down'
 
       match /down\s+(\S+)/

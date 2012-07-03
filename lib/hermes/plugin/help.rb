@@ -9,8 +9,8 @@ module Hermes
     class Help
       include Cinch::Plugin
 
-      set :help => 'help - Shows the help message of a plugin or lists all ' \
-        'available commands',
+      set :help => 'help [COMMAND] - Shows the help message of a plugin ' \
+        'or lists all available commands',
         :plugin_name => 'help'
 
       match /help$/
