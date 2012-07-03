@@ -2,6 +2,7 @@ require 'nokogiri'
 require 'httparty'
 require 'cinch'
 require 'json'
+require 'sequel'
 require 'sanitize'
 
 $:.unshift(File.expand_path('../', __FILE__))
@@ -19,14 +20,35 @@ require 'hermes/plugin/help'
 # @since 2012-06-27
 #
 module Hermes
+  ##
+  # Array containing the signals that will shut down the bot gracefully.
+  #
+  # @since  2012-06-27
+  # @return [Array]
+  #
+  SIGNALS = ['INT', 'QUIT']
+
+  ##
+  # Array containing the plugins that should be enabled by default.
+  #
+  # @since  2012-06-30
+  # @return [Array]
+  #
+  DEFAULT_PLUGINS = [
+    Hermes::Plugin::Cat,
+    Hermes::Plugin::Down,
+    Hermes::Plugin::UrbanDictionary,
+    Hermes::Plugin::Google,
+    Hermes::Plugin::Help
+  ]
+
   class << self
     ##
-    # Array containing the signals that will shut down the bot gracefully.
+    # The database connection to use.
     #
-    # @since  2012-06-27
-    # @return [Array]
+    # @since 2012-06-30
     #
-    SIGNALS = ['INT', 'QUIT']
+    attr_accessor :database
 
     ##
     # Attribute that contains the primary instance of `Cinch::Bot`.
