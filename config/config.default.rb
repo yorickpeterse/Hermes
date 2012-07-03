@@ -5,5 +5,13 @@ Hermes.bot.configure do |c|
 
   # Plugin configuration.
   c.plugins.prefix  = '.'
-  c.plugins.plugins = [Hermes::Plugin::Cat]
+  c.plugins.plugins = Hermes::DEFAULT_PLUGINS
 end
+
+# Connect to the database.
+Hermes.database = Sequel.connect(
+  :adapter  => 'sqlite',
+  :database => File.expand_path('../../database.db', __FILE__),
+  :encoding => 'utf8',
+  :test     => true
+)
