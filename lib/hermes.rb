@@ -13,6 +13,7 @@ require 'hermes/plugin/urban_dictionary'
 require 'hermes/plugin/google'
 require 'hermes/plugin/help'
 require 'hermes/plugin/remember'
+require 'hermes/plugin/quote'
 
 Sequel.extension(:migration)
 Sequel::Model.plugin(:validation_helpers)
@@ -33,6 +34,14 @@ module Hermes
   SIGNALS = ['INT', 'QUIT']
 
   ##
+  # The date format to use whe ndisplaying dates with times.
+  #
+  # @since  2012-07-06
+  # @return [String]
+  #
+  DATE_TIME_FORMAT = '%Y-%m-%d %H:%M'
+
+  ##
   # Array containing the plugins that should be enabled by default.
   #
   # @since  2012-06-30
@@ -44,7 +53,8 @@ module Hermes
     Hermes::Plugin::UrbanDictionary,
     Hermes::Plugin::Google,
     Hermes::Plugin::Help,
-    Hermes::Plugin::Remember
+    Hermes::Plugin::Remember,
+    Hermes::Plugin::Quote
   ]
 
   class << self
@@ -65,6 +75,7 @@ module Hermes
       @database = db
 
       require 'hermes/model/word'
+      require 'hermes/model/quote'
     end
 
     ##
