@@ -67,7 +67,7 @@ module Hermes
         url, title, date = FEEDS[feed].parse(response.body)
 
         if url and title and date
-          formatted_date = date.strftime('%Y-%m-%d %H:%M')
+          formatted_date = date.strftime(Hermes::DATE_TIME_FORMAT)
 
           message.reply("#{title} at #{formatted_date}: #{url}", true)
         else
