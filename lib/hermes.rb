@@ -12,6 +12,10 @@ require 'hermes/plugin/down'
 require 'hermes/plugin/urban_dictionary'
 require 'hermes/plugin/google'
 require 'hermes/plugin/help'
+require 'hermes/plugin/remember'
+
+Sequel.extension(:migration)
+Sequel::Model.plugin(:validation_helpers)
 
 ##
 # Hermes is an IRC bot written to replace the "forrstdotcom" bot in the
@@ -39,7 +43,8 @@ module Hermes
     Hermes::Plugin::Down,
     Hermes::Plugin::UrbanDictionary,
     Hermes::Plugin::Google,
-    Hermes::Plugin::Help
+    Hermes::Plugin::Help,
+    Hermes::Plugin::Remember
   ]
 
   class << self
@@ -48,7 +53,19 @@ module Hermes
     #
     # @since 2012-06-30
     #
-    attr_accessor :database
+    attr_reader :database
+
+    ##
+    # Sets the database connection and loads all the models.
+    #
+    # @since 2012-07-05
+    # @param [Mixed] db The database connection to use.
+    #
+    def database=(db)
+      @database = db
+
+      require 'hermes/model/word'
+    end
 
     ##
     # Attribute that contains the primary instance of `Cinch::Bot`.
