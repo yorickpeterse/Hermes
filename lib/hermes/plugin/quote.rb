@@ -9,7 +9,8 @@ module Hermes
       include Cinch::Plugin
 
       set :help => 'q/quote add [NICK] [QUOTE] - Adds a new quote for ' \
-        'the user | q/quote [NICK] [NUMBER] - Displays a quote of the user',
+        'the user | q/quote [CHANNEL] [NICK] [NUMBER] - Displays either a ' \
+        'randomly selected quote or the nth quote of a user',
         :plugin_name => 'quote'
 
       match /q\s+(.+)/,     :method => :execute
