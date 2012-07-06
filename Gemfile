@@ -8,6 +8,7 @@ gem 'rake'
 gem 'sanitize'
 gem 'sequel'
 gem 'shebang'
+gem 'sinatra'
 
 group :development do
   gem 'sqlite3'
