@@ -8,7 +8,11 @@ gem 'rake'
 gem 'sanitize'
 gem 'sequel'
 gem 'shebang'
-gem 'sinatra'
+
+group :api do
+  gem 'sinatra'
+  gem 'unicorn'
+end
 
 group :development do
   gem 'sqlite3'
