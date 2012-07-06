@@ -4,5 +4,5 @@ require 'sinatra/base'
 require 'hermes/controller/quote'
 
 map '/quotes' do
-  run Hermes::Controller::Quote.new
+  run Hermes::Controller::Quotes.new
 end

@@ -6,7 +6,7 @@ module Hermes
     #
     # @since 2012-07-06
     #
-    class Quote < Sinatra::Base
+    class Quotes < Sinatra::Base
       ##
       # Displays a list of all the quotes. The following parameters can be set:
       #
