@@ -15,6 +15,7 @@ require 'hermes/plugin/google'
 require 'hermes/plugin/help'
 require 'hermes/plugin/remember'
 require 'hermes/plugin/quote'
+require 'hermes/plugin/tell'
 
 Sequel.extension(:migration)
 Sequel::Model.plugin(:validation_helpers)
@@ -55,7 +56,8 @@ module Hermes
     Hermes::Plugin::Google,
     Hermes::Plugin::Help,
     Hermes::Plugin::Remember,
-    Hermes::Plugin::Quote
+    Hermes::Plugin::Quote,
+    Hermes::Plugin::Tell
   ]
 
   class << self
@@ -75,8 +77,9 @@ module Hermes
     def database=(db)
       @database = db
 
-      require 'hermes/model/word'
-      require 'hermes/model/quote'
+      Dir[File.expand_path('../hermes/model/*.rb', __FILE__)].each do |model|
+        require model
+      end
     end
 
     ##

@@ -14,7 +14,7 @@ module Hermes
       # @since 2012-07-05
       #
       def validate
-        validates_presence([:nick, :received_nick, :message])
+        validates_presence([:nick, :receiver_nick, :message, :channel])
       end
     end # Quote
   end # Model
