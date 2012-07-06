@@ -14,6 +14,7 @@ GEM
       nokogiri (>= 1.4.4, < 1.6)
     sequel (3.37.0)
     shebang (0.1)
+    sqlite3 (1.3.6)
 
 PLATFORMS
   ruby
@@ -27,3 +28,4 @@ DEPENDENCIES
   sanitize
   sequel
   shebang
+  sqlite3
