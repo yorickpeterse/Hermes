@@ -5,17 +5,16 @@ require 'cinch'
 require 'json'
 require 'sequel'
 require 'sanitize'
+require 'uri'
 
 $:.unshift(File.expand_path('../', __FILE__))
 
-require 'hermes/plugin/cat'
-require 'hermes/plugin/down'
-require 'hermes/plugin/urban_dictionary'
-require 'hermes/plugin/google'
-require 'hermes/plugin/help'
-require 'hermes/plugin/remember'
-require 'hermes/plugin/quote'
-require 'hermes/plugin/tell'
+# Load all the helpers and plugins.
+['helper', 'plugin'].each do |directory|
+  Dir[File.expand_path("../hermes/#{directory}/*.rb", __FILE__)].each do |file|
+    require file
+  end
+end
 
 Sequel.extension(:migration)
 Sequel::Model.plugin(:validation_helpers)
@@ -57,7 +56,8 @@ module Hermes
     Hermes::Plugin::Help,
     Hermes::Plugin::Remember,
     Hermes::Plugin::Quote,
-    Hermes::Plugin::Tell
+    Hermes::Plugin::Tell,
+    Hermes::Plugin::URL
   ]
 
   class << self
