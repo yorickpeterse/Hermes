@@ -24,7 +24,7 @@ module Hermes
         return unless message.message =~ /http/
 
         channel   = message.channel.to_s
-        extracted = URI.extract(message.message)
+        extracted = URI.extract(message.message).map { |u| u.chomp('/') }
         existing  = Model::URL.filter(:url => extracted, :channel => channel) \
           .all
 
