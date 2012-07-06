@@ -33,7 +33,7 @@ module Hermes
           quotes = quotes.filter(:nick => params[:nick])
         end
 
-        return JSON.dump(quotes.map { |q| q.values })
+        return JSON.dump(quotes.map(&:values))
       end
 
       ##
