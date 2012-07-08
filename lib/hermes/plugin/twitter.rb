@@ -8,9 +8,10 @@ module Hermes
     class Twitter
       include Cinch::Plugin
 
-      match /tw\s+(.+)/
+      match /tw\s+(.+)/,      :method => :execute
+      match /twitter\s+(.+)/, :method => :execute
 
-      set :help => 'tw [USERNAME|HASH TAG|TWEET ID] - ' \
+      set :help => 'tw/twitter [USERNAME|HASH TAG|TWEET ID] - ' \
         'Retrieves the latest tweet from a user, hash tag or tweet ID',
         :plugin_name => 'twitter'
 
