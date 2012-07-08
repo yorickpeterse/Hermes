@@ -8,6 +8,7 @@ gem 'rake'
 gem 'sanitize'
 gem 'sequel'
 gem 'shebang'
+gem 'twitter'
 
 group :api do
   gem 'sinatra'
