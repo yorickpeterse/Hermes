@@ -57,7 +57,8 @@ module Hermes
     Hermes::Plugin::Remember,
     Hermes::Plugin::Quote,
     Hermes::Plugin::Tell,
-    Hermes::Plugin::URL
+    Hermes::Plugin::URL,
+    Hermes::Plugin::Weather
   ]
 
   class << self
