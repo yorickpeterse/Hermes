@@ -52,7 +52,7 @@ module Hermes
           )
         end
 
-        response = HTTParty.get(FEEDS[feed]::URL)
+        response = Faraday.get(FEEDS[feed]::URL)
 
         unless response.success?
           message.reply(

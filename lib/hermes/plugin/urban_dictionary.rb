@@ -32,7 +32,7 @@ module Hermes
       #
       def execute(message, term)
         begin
-          response = HTTParty.get(URL, :query => {:term => term})
+          response = Faraday.get(URL, :term => term)
         rescue e
           message.reply("Failed to get the definition: #{e.message}", true)
 

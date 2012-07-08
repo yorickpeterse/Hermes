@@ -25,7 +25,7 @@ module Hermes
       # @return [String]
       #
       def url_title(url)
-        response   = HTTParty.get(url)
+        response   = Faraday.get(url)
         head       = response.body.split(/<body/)[0]
         url_parser = Hermes::SAXParser::URLTitle.new
         parser     = Nokogiri::HTML::SAX::Parser.new(url_parser)
@@ -41,19 +41,16 @@ module Hermes
       # @since  2012-07-06
       # @param  [String] url The URL to shorten.
       # @return [String]
-      # @raise  [HTTParty::ResponseError] Raised when the URL could not be
+      # @raise  [Faraday::Error::ClientError] Raised when the URL could not be
       #  shortened.
       #
       def shorten_url(url)
-        response = HTTParty.get(
-          IS_GD_URL,
-          :query => {:format => :simple, :url => url}
-        )
+        response = Faraday.get(IS_GD_URL, :format => :simple, :url => url)
 
         if response.success? and !response.body.include?('error: please')
           return response.body.strip
         else
-          raise(HTTParty::ResponseError, response.body)
+          raise(Faraday::Error::ClientError, response.body)
         end
       end
     end # URL

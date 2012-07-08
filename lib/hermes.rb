@@ -1,6 +1,6 @@
 require 'bundler/setup'
 require 'nokogiri'
-require 'httparty'
+require 'faraday'
 require 'cinch'
 require 'json'
 require 'sequel'

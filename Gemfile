@@ -2,7 +2,7 @@ source :rubygems
 
 gem 'bacon'
 gem 'cinch'
-gem 'httparty'
+gem 'faraday'
 gem 'nokogiri'
 gem 'rake'
 gem 'sanitize'

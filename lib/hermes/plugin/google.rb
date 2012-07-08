@@ -83,7 +83,7 @@ module Hermes
       #
       def search(type, query)
         begin
-          response = HTTParty.get(URL % type, :query => {:q => query})
+          response = Faraday.get(URL % type, :q => query)
         rescue
           return false
         end
