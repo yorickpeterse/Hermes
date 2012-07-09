@@ -60,7 +60,8 @@ module Hermes
     Hermes::Plugin::Tell,
     Hermes::Plugin::URL,
     Hermes::Plugin::Weather,
-    Hermes::Plugin::Twitter
+    Hermes::Plugin::Twitter,
+    Hermes::Plugin::Wikipedia
   ]
 
   class << self
