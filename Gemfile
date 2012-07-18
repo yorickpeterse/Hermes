@@ -1,6 +1,5 @@
 source :rubygems
 
-gem 'bacon'
 gem 'cinch'
 gem 'faraday'
 gem 'nokogiri'
@@ -17,5 +16,6 @@ group :api do
 end
 
 group :development do
+  gem 'bacon'
   gem 'sqlite3'
 end
