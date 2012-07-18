@@ -9,6 +9,7 @@ gem 'sanitize'
 gem 'sequel'
 gem 'shebang'
 gem 'twitter'
+gem 'youtube_it'
 
 group :api do
   gem 'sinatra'

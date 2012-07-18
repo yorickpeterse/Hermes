@@ -7,6 +7,7 @@ require 'sequel'
 require 'sanitize'
 require 'uri'
 require 'twitter'
+require 'youtube_it'
 
 $:.unshift(File.expand_path('../', __FILE__))
 
@@ -61,7 +62,8 @@ module Hermes
     Hermes::Plugin::URL,
     Hermes::Plugin::Weather,
     Hermes::Plugin::Twitter,
-    Hermes::Plugin::Wikipedia
+    Hermes::Plugin::Wikipedia,
+    Hermes::Plugin::Youtube
   ]
 
   class << self
