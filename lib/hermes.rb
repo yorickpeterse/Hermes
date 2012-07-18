@@ -6,6 +6,7 @@ require 'json'
 require 'sequel'
 require 'sanitize'
 require 'uri'
+require 'cgi'
 require 'twitter'
 require 'youtube_it'
 

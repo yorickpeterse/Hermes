@@ -14,6 +14,14 @@ module Hermes
       listen_to :message
 
       ##
+      # Array of hostnames to ignore.
+      #
+      # @since  2012-07-18
+      # @return [Array]
+      #
+      IGNORE = ['youtube.com', 'youtu.be', 'www.youtube.com', 'www.youtu.be']
+
+      ##
       # Retrieves the title of the URL, shortens the URL (if needed) and yells
       # at users if the URL has already been posted.
       #
@@ -25,7 +33,15 @@ module Hermes
 
         channel   = message.channel.to_s
         extracted = URI.extract(message.message).map { |u| u.chomp('/') }
-        existing  = Model::URL.filter(:url => extracted, :channel => channel) \
+
+        # Remove URLs of which the hostnames should be ignored.
+        extracted.each do |url|
+          extracted.delete(url) if IGNORE.include?(URI.parse(url).host)
+        end
+
+        return if extracted.empty?
+
+        existing = Model::URL.filter(:url => extracted, :channel => channel) \
           .all
 
         if !existing.empty?
