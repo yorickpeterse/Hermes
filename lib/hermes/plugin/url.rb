@@ -46,13 +46,13 @@ module Hermes
 
         if !existing.empty?
           existing.each do |row|
+            display_title(message, row)
+
             row.update(
               :last_posted_at => Time.now,
               :times_posted   => row.times_posted + 1,
               :last_nick      => message.user.nick
             )
-
-            display_title(message, row)
           end
         else
           extracted.each do |url|
@@ -102,9 +102,11 @@ module Hermes
         segments = [row.title, "Short URL: #{row.short_url}"]
 
         if show_last_posted
-          yesterday = Time.at(Time.now.to_i - (24 * 60 * 60))
+          yesterday   = Time.at(Time.now.to_i - (24 * 60 * 60))
+          last_posted = row.last_posted_at.to_time
+          diff        = Time.now.to_i - last_posted.to_i
 
-          if row.last_posted_at.to_time >= yesterday
+          if row.last_posted_at.to_time >= yesterday and diff > 5
             segments << "Last posted by %s on %s, pay attention dumbass!" % [
               row.last_nick,
               row.last_posted_at.strftime(Hermes::DATE_TIME_FORMAT)
