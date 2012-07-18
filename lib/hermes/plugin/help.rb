@@ -26,7 +26,7 @@ module Hermes
           plugin.class.instance_variable_get(:@plugin_name)
         end
 
-        message.reply("Available commands: #{names.join(', ')}")
+        message.reply("Available commands: #{names.sort.join(', ')}")
       end
     end # Help
   end # Plugin
