@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+
+# Deploy hook that is executed after a set of commits is pushed to a
+# production server.
+source submodules/deployment/lib/deployment
+
+app_dir '/home/hermes/hermes'
+
+# Create the service configuration for the bot.
+runit_dir         "$HOME/service/hermes-bot"
+runit_service     'exec chpst -d 62914560 bundle exec ruby bin/hermes 2>&1'
+runit_log_service "svlogd -tt $RUNIT_DIR/log 2>&1"
+
+# Create the service configuration for the API.
+runit_dir         "$HOME/service/hermes-api"
+runit_service     "exec chpst -d 62914560 \
+    bundle exec -c config/unicorn.rb config.ru 2>&1"
+
+runit_log_service "svlogd -tt $RUNIT_DIR/log 2>&1"
+
+cd_app
+install_gems
+migrate_db
+
+#echo 'Restarting bot'
+
+#sv restart "$HOME/service/hermes-bot"
+
+#echo 'Restarting API'
+
+#sv restart "$HOME/service/hermes-api"
