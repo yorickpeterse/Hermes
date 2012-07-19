@@ -23,7 +23,7 @@ migrate_db
 
 echo 'Restarting bot'
 
-sv restart "$HOME/service/hermes-bot"
+sv restart "$HOME/service/bot"
 
 #echo 'Restarting API'
 
