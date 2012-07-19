@@ -9,11 +9,3 @@ Hermes.bot.configure do |c|
 end
 
 Hermes.bot.loggers.level = :info
-
-# Connect to the database.
-Hermes.database = Sequel.connect(
-  :adapter  => 'sqlite',
-  :database => File.expand_path('../../database.db', __FILE__),
-  :encoding => 'utf8',
-  :test     => true
-)

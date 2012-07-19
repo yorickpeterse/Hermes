@@ -1,5 +1,3 @@
 require File.expand_path('../lib/hermes', __FILE__)
-
-['config'].each do |config|
-  require File.expand_path("../config/#{config}.rb", __FILE__)
-end
+require File.expand_path('../config/config', __FILE__)
+require File.expand_path('../config/database', __FILE__)

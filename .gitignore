@@ -1,2 +1,5 @@
 config/config.rb
+config/database.rb
+config/unicorn.rb
+
 database.db
