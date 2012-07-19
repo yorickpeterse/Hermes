@@ -25,6 +25,6 @@ echo 'Restarting bot'
 
 sv restart "$HOME/service/bot"
 
-#echo 'Restarting API'
+echo 'Restarting API'
 
-#sv restart "$HOME/service/hermes-api"
+sv restart "$HOME/service/api"
