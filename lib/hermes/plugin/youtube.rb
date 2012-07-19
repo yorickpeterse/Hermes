@@ -106,7 +106,7 @@ module Hermes
         if video.duration <= 60
           duration = '%is' % video.duration
         elsif video.duration <= 3600
-          duration = '%im' % video.duration / 60
+          duration = '%im' % (video.duration / 60)
         else
           duration = '%.2fh' % (video.duration.to_f / 3600)
         end
