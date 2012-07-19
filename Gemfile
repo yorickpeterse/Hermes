@@ -1,5 +1,6 @@
 source :rubygems
 
+gem 'pg'
 gem 'cinch'
 gem 'faraday'
 gem 'nokogiri'
