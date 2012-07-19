@@ -8,6 +8,8 @@ Hermes.bot.configure do |c|
   c.plugins.plugins = Hermes::DEFAULT_PLUGINS
 end
 
+Hermes.bot.loggers.level = :info
+
 # Connect to the database.
 Hermes.database = Sequel.connect(
   :adapter  => 'sqlite',
