@@ -22,6 +22,14 @@ module Hermes
       IGNORE = ['youtube.com', 'youtu.be', 'www.youtube.com', 'www.youtu.be']
 
       ##
+      # Array of URL schemes that should be extracted.
+      #
+      # @since  2012-07-19
+      # @return [Array]
+      #
+      SCHEMES = ['http', 'https']
+
+      ##
       # Retrieves the title of the URL, shortens the URL (if needed) and yells
       # at users if the URL has already been posted.
       #
@@ -32,7 +40,10 @@ module Hermes
         return unless message.message =~ /http/
 
         channel   = message.channel.to_s
-        extracted = URI.extract(message.message).map { |u| u.chomp('/') }
+        extracted = URI.extract(
+          message.message,
+          SCHEMES
+        ).map { |u| u.chomp('/') }
 
         # Remove URLs of which the hostnames should be ignored.
         extracted.each do |url|
