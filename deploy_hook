@@ -4,7 +4,7 @@
 # production server.
 source submodules/deployment/lib/deployment
 
-app_dir '/home/hermes/hermes'
+app_dir '/srv/http/hermes.yorickpeterse.com'
 
 # Create the service configuration for the bot.
 runit_dir         "$HOME/service/bot"
