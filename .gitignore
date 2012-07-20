@@ -2,6 +2,7 @@ config/config.rb
 config/database.rb
 config/unicorn.rb
 
+.bundle
 tmp/*
 !tmp/.gitkeep
 

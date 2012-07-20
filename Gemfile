@@ -1,6 +1,5 @@
 source :rubygems
 
-gem 'pg'
 gem 'cinch'
 gem 'faraday'
 gem 'nokogiri'
@@ -14,6 +13,10 @@ gem 'youtube_it'
 group :api do
   gem 'sinatra'
   gem 'unicorn'
+end
+
+group :production do
+  gem 'pg'
 end
 
 group :development do
