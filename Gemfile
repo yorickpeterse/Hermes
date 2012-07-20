@@ -22,4 +22,5 @@ end
 group :development do
   gem 'bacon'
   gem 'sqlite3'
+  gem 'webmock'
 end
