@@ -18,14 +18,22 @@ module Hermes
       IS_GD_URL = 'http://is.gd/create.php'
 
       ##
-      # Extracts the title of a URL.
+      # Extracts the title of a URL. If the response page is a non HTML page
+      # nil is returned instead of the title.
       #
       # @since  2012-07-06
       # @param  [String] url The URL for which to extract the title.
       # @return [String]
       #
       def url_title(url)
-        response   = Faraday.get(url)
+        response = Faraday.get(url)
+
+        # Skip non HTML responses.
+        if response.headers['content-type'] \
+        and response.headers['content-type'] != %r{text/html}
+          return
+        end
+
         head       = response.body.split(/<body/)[0]
         url_parser = Hermes::SAXParser::URLTitle.new
         parser     = Nokogiri::HTML::SAX::Parser.new(url_parser)

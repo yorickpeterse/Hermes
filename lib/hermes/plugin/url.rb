@@ -110,7 +110,9 @@ module Hermes
       #  user will be notified if the URL was posted in the past 24 hours.
       #
       def display_title(message, row, show_last_posted = true)
-        segments = [row.title, "Short URL: #{row.short_url}"]
+        segments = ["Short URL: #{row.short_url}"]
+
+        segments.unshift(row.title) if row.title
 
         if show_last_posted
           yesterday   = Time.at(Time.now.to_i - (24 * 60 * 60))
