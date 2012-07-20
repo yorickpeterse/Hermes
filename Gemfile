@@ -12,11 +12,11 @@ gem 'youtube_it'
 
 group :api do
   gem 'sinatra'
-  gem 'unicorn'
 end
 
 group :production do
   gem 'pg'
+  gem 'unicorn'
 end
 
 group :development do
