@@ -30,7 +30,7 @@ module Hermes
 
         # Skip non HTML responses.
         if response.headers['content-type'] \
-        and response.headers['content-type'] != %r{text/html}
+        and response.headers['content-type'] !~ %r{text/html}
           return
         end
 
