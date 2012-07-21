@@ -41,6 +41,14 @@ module Hermes
       ]
 
       ##
+      # Array of URI protocols to extract.
+      #
+      # @since  2012-07-21
+      # @return [Array]
+      #
+      SCHEMES = ['http', 'https']
+
+      ##
       # Retrieves the first video for the given search query.
       #
       # @since 2012-07-09
@@ -69,7 +77,7 @@ module Hermes
 
         return if msg !~ /youtube/ and msg !~ /youtu\.be/
 
-        extracted = URI.extract(msg).map { |u| u.chomp('/') }
+        extracted = URI.extract(msg, SCHEMES).map { |u| u.chomp('/') }
 
         extracted.each do |url|
           parsed = URI.parse(url)
@@ -84,7 +92,7 @@ module Hermes
           if query['v']
             video = CLIENT.video_by(query['v'][0])
 
-            message.reply(video_description(video), true)
+            message.reply(video_description(video))
           end
         end
       end
