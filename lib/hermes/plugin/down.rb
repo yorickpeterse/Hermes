@@ -22,7 +22,7 @@ module Hermes
       #
       def execute(message, url)
         begin
-          response = Faraday.head(url)
+          response = HTTP.head(url)
         rescue => e
           message.reply(
             "The URL #{url} doesn't seem to be working: #{e.message}",

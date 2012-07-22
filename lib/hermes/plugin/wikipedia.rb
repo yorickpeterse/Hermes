@@ -29,7 +29,7 @@ module Hermes
       # @param [String] query The search query.
       #
       def execute(message, query)
-        response = Faraday.get(
+        response = HTTP.get(
           URL,
           :format => 'xml',
           :action => 'opensearch',

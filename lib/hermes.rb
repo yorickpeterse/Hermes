@@ -4,6 +4,7 @@ require 'uri'
 require 'bundler/setup'
 require 'cinch'
 require 'faraday'
+require 'faraday_middleware'
 require 'nokogiri'
 require 'sanitize'
 require 'sequel'
@@ -66,6 +67,17 @@ module Hermes
     Hermes::Plugin::Wikipedia,
     Hermes::Plugin::Youtube
   ]
+
+  ##
+  # The Faraday connection to use.
+  #
+  # @since  2012-07-22
+  # @return [Faraday::Connection]
+  #
+  HTTP = Faraday.new do |f|
+    f.response :follow_redirects
+    f.adapter  Faraday.default_adapter
+  end
 
   class << self
     ##

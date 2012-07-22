@@ -26,7 +26,7 @@ module Hermes
       # @return [String]
       #
       def url_title(url)
-        response = Faraday.get(url)
+        response = HTTP.get(url)
 
         # Skip non HTML responses.
         if response.headers['content-type'] \
@@ -53,7 +53,7 @@ module Hermes
       #  shortened.
       #
       def shorten_url(url)
-        response = Faraday.get(IS_GD_URL, :format => :simple, :url => url)
+        response = HTTP.get(IS_GD_URL, :format => :simple, :url => url)
 
         if response.success? and !response.body.include?('error: please')
           return response.body.strip

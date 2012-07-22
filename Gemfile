@@ -2,6 +2,7 @@ source :rubygems
 
 gem 'cinch'
 gem 'faraday'
+gem 'faraday_middleware'
 gem 'nokogiri'
 gem 'rake'
 gem 'sanitize'

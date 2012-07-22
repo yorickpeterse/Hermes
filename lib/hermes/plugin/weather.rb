@@ -49,7 +49,7 @@ module Hermes
           end
         end
 
-        response = Faraday.get(API_URL, :weather => location)
+        response = HTTP.get(API_URL, :weather => location)
 
         if !response.success?
           message.reply(
