@@ -92,7 +92,7 @@ module Hermes
           if query['v']
             video = CLIENT.video_by(query['v'][0])
 
-            message.reply(video_description(video))
+            message.reply(video_description(video, false))
           end
         end
       end
@@ -103,9 +103,11 @@ module Hermes
       # @since 2012-07-18
       # @param [YouTubeIt::Model::Video] video The video for which to generate
       #  a description.
+      # @param [TrueClass|FalseClass] include_url When set to true the URL to
+      #  the video will be displayed as well.
       # @return [String]
       #
-      def video_description(video)
+      def video_description(video, include_url = true)
         rating   = '%.2f/%.1f' % [video.rating.average, video.rating.max]
         duration = '0s'
 
@@ -119,15 +121,20 @@ module Hermes
           duration = '%.2fh' % (video.duration.to_f / 3600)
         end
 
-        return '%s - length %s - rated %s - %s views - by %s on %s - %s' % [
+        reply = '%s - length %s - rated %s - %s views - by %s on %s' % [
           video.title,
           duration,
           rating,
           video.view_count,
           video.author.name,
-          video.uploaded_at.strftime(Hermes::DATE_TIME_FORMAT),
-          video.player_url
+          video.uploaded_at.strftime(Hermes::DATE_TIME_FORMAT)
         ]
+
+        if include_url
+          reply += ' - %s' % video.player_url
+        end
+
+        return reply
       end
     end # Youtube
   end # Plugin
