@@ -30,6 +30,14 @@ module Hermes
       SCHEMES = ['http', 'https']
 
       ##
+      # The minimum length of a URL before a short URL should be created.
+      #
+      # @since  2012-07-22
+      # @return [Fixnum]
+      #
+      SHORTEN_LENGTH = 45
+
+      ##
       # Retrieves the title of the URL, shortens the URL (if needed) and yells
       # at users if the URL has already been posted.
       #
@@ -70,6 +78,7 @@ module Hermes
             begin
               display_title(message, save_url(message, url), false)
             rescue => e
+              error(e.message + "\n" + e.backtrace.join("\n"))
               message.reply("Failed to process the URL: #{e.message}")
             end
           end
@@ -88,10 +97,17 @@ module Hermes
       # @return [Hermes::Model::URL]
       #
       def save_url(message, url)
+        short_url = nil
+        title     = url_title(url)
+
+        if url.length >= SHORTEN_LENGTH
+          short_url = shorten_url(url)
+        end
+
         return Model::URL.create(
           :url            => url,
-          :short_url      => shorten_url(url),
-          :title          => url_title(url),
+          :short_url      => short_url,
+          :title          => title,
           :channel        => message.channel.to_s,
           :nick           => message.user.nick,
           :last_nick      => message.user.nick,
@@ -110,9 +126,15 @@ module Hermes
       #  user will be notified if the URL was posted in the past 24 hours.
       #
       def display_title(message, row, show_last_posted = true)
-        segments = ["Short URL: #{row.short_url}"]
+        segments = []
 
-        segments.unshift(row.title) if row.title
+        if row.short_url
+          segments << "Short URL: #{row.short_url}"
+        end
+
+        if row.title
+          segments.unshift("URL title: #{row.title}")
+        end
 
         if show_last_posted
           yesterday   = Time.at(Time.now.to_i - (24 * 60 * 60))
@@ -127,7 +149,9 @@ module Hermes
           end
         end
 
-        message.reply(segments.join(' | '))
+        unless segments.empty?
+          message.reply(segments.join(' | '))
+        end
       end
     end # URL
   end # Plugin

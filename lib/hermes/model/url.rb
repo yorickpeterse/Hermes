@@ -15,9 +15,7 @@ module Hermes
       # @since 2012-07-06
       #
       def validate
-        validates_presence(
-          [:url, :short_url, :nick, :channel, :last_posted_at]
-        )
+        validates_presence([:url, :nick, :channel, :last_posted_at])
       end
     end # URL
   end # Model
