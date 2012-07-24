@@ -40,7 +40,7 @@ module Hermes
 
         parser.parse(head)
 
-        return url_parser.title.strip
+        return url_parser.title.gsub(/\s{2,}|\n/, ' ').strip
       end
 
       ##
