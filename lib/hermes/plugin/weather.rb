@@ -81,7 +81,7 @@ module Hermes
         high      = forecast.css('high').attr('data')
         low       = forecast.css('low').attr('data')
 
-        reply = '%s: %s, %s/%s (H:%s, L:%s), %s, %s' % \
+        reply = '%s: %s, %sF/%sC (H:%s, L:%s), %s, %s' % \
           [city, condition, temp_f, temp_c, high, low, humidity, wind]
 
         if existing_location
