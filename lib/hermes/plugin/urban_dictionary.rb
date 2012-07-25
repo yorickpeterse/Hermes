@@ -12,8 +12,8 @@ module Hermes
         'using Urban Dictionary',
         :plugin_name => 'urban'
 
-      match /u\s+(\S+)/,     :method => :execute
-      match /urban\s+(\S+)/, :method => :execute
+      match /u\s+(.+)/,     :method => :execute
+      match /urban\s+(.+)/, :method => :execute
 
       ##
       # The URL to send HTTP requests to.
