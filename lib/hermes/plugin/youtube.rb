@@ -8,6 +8,7 @@ module Hermes
     #
     class Youtube
       include Cinch::Plugin
+      include Helper::Message
 
       set :help => 'y/youtube [QUERY] - Retrieves the first Youtube movie ' \
         'for the query',
@@ -75,7 +76,9 @@ module Hermes
       def listen(message)
         msg = message.message
 
-        return if msg !~ /youtube/ and msg !~ /youtu\.be/
+        if (msg !~ /youtube/ and msg !~ /youtu\.be/) or plugin_command?(msg)
+          return
+        end
 
         extracted = URI.extract(msg, SCHEMES).map { |u| u.chomp('/') }
 

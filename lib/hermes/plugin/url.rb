@@ -10,6 +10,7 @@ module Hermes
     class URL
       include Cinch::Plugin
       include Helper::URL
+      include Helper::Message
 
       listen_to :message
 
@@ -45,7 +46,9 @@ module Hermes
       # @param [Cinch::Message] message
       #
       def listen(message)
-        return unless message.message =~ /http/
+        if message.message !~ /http/ or plugin_command?(message.message)
+          return
+        end
 
         channel   = message.channel.to_s
         extracted = URI.extract(
