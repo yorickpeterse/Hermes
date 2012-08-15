@@ -53,8 +53,8 @@ module Hermes
 
         if !response.success?
           message.reply(
-            "Failed to retrieve the weather forecast: " \
-              "#{response.status} #{response.body}",
+            "Failed to retrieve the weather forecast, HTTP status: " \
+              "#{response.status}",
             true
           )
 
