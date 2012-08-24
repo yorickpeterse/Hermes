@@ -23,10 +23,6 @@ end
 Sequel.extension(:migration)
 Sequel::Model.plugin(:validation_helpers)
 
-# Disable SSL verification so that the bot is able to properly handle URLs with
-# invalid or unverified certificates.
-OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE
-
 ##
 # Hermes is an IRC bot written to replace the "forrstdotcom" bot in the
 # `#forrst-chat` IRC channel.
@@ -73,12 +69,28 @@ module Hermes
   ]
 
   ##
+  # Hash containing request configuration options for Faraday.
+  #
+  # @since  2012-08-24
+  # @return [Hash]
+  #
+  REQUEST_OPTIONS = {:timeout => 10}
+
+  ##
+  # Hash containing configuration options for SSL.
+  #
+  # @since  2012-08-24
+  # @return [Hash]
+  #
+  SSL_OPTIONS = {:verify_mode => OpenSSL::SSL::VERIFY_NONE}
+
+  ##
   # The Faraday connection to use.
   #
   # @since  2012-07-22
   # @return [Faraday::Connection]
   #
-  HTTP = Faraday.new do |f|
+  HTTP = Faraday.new(:request => REQUEST_OPTIONS, :ssl => SSL_OPTIONS) do |f|
     f.response :follow_redirects
     f.adapter  Faraday.default_adapter
   end
