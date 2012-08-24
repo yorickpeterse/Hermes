@@ -23,6 +23,10 @@ end
 Sequel.extension(:migration)
 Sequel::Model.plugin(:validation_helpers)
 
+# Disable SSL verification so that the bot is able to properly handle URLs with
+# invalid or unverified certificates.
+OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE
+
 ##
 # Hermes is an IRC bot written to replace the "forrstdotcom" bot in the
 # `#forrst-chat` IRC channel.
