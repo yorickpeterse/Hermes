@@ -111,7 +111,9 @@ module Hermes
       # @return [String]
       #
       def video_description(video, include_url = true)
-        rating   = '%.2f/%.1f' % [video.rating.average, video.rating.max]
+        average  = video.rating.average rescue 0
+        max      = video.rating.max rescue 5
+        rating   = '%.2f/%.1f' % [average, max]
         duration = '0s'
 
         # Convert the duration (which is in seconds) into a human readable
