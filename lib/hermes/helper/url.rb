@@ -40,6 +40,8 @@ module Hermes
 
         parser.parse(head)
 
+        return unless url_parser.title
+
         return url_parser.title.gsub(/\s{2,}|\n/, ' ').strip
       end
 
