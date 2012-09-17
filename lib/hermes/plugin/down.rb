@@ -14,6 +14,13 @@ module Hermes
       match /down\s+(\S+)/
 
       ##
+      # Array of status numbers that are used for a valid HTTP response.
+      #
+      # @return [Array]
+      #
+      SUCCESS_STATUSES = [301, 200]
+
+      ##
       # Executes the plugin.
       #
       # @since 2012-06-27
@@ -21,6 +28,11 @@ module Hermes
       # @param [String] url The URL to check.
       #
       def execute(message, url)
+        # Always ensure a protocol is set.
+        if url !~ /^http/
+          url = 'http://' + url
+        end
+
         begin
           response = HTTP.head(url)
         rescue => e
@@ -32,7 +44,7 @@ module Hermes
           return
         end
 
-        if response.success?
+        if SUCCESS_STATUSES.include?(response.status)
           message.reply("The URL #{url} seems to be working fine", true)
         else
           message.reply(
