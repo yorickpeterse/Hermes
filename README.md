@@ -10,8 +10,6 @@ website titles (along with shortening the URLs) and much more.
 * uses Cinch, a well developed and documented IRC bot framework
 * wide variety of plugins for retrieving URL titles, storing quotes, retrieving
   cat pictures (very important), displaying the weather and so on
-* a Sinatra API that provides read only access to public data stored in the
-  bot's database
 * it doesn't leak memory as bad as Skybot does
 
 ## Requirements

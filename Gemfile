@@ -11,13 +11,8 @@ gem 'shebang'
 gem 'twitter'
 gem 'youtube_it'
 
-group :api do
-  gem 'sinatra'
-end
-
 group :production do
   gem 'pg'
-  gem 'unicorn'
 end
 
 group :development do
