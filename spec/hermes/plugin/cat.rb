@@ -28,4 +28,17 @@ describe 'Hermes::Plugin::Cat' do
 
     date.strftime('%Y-%m-%d %H:%M').should == '2012-06-27 17:15'
   end
+
+  it "Retrieve the latest cat picture/video from nirix's feed" do
+    xml = File.read(File.join(FIXTURES, 'plugin/cat/nirix.xml'))
+
+    url, title, date = Hermes::Plugin::Cat::Nirix.parse(xml)
+
+    url.should   == 'http://cat.jackpolgar.com/images/IMG_0829.jpg'
+    title.should == 'IMG_0829.jpg'
+
+    date.is_a?(Time).should == true
+
+    date.strftime('%Y-%m-%d %H:%M').should == '2012-09-17 08:25'
+  end
 end
