@@ -14,14 +14,6 @@ module Hermes
         :plugin_name => 'weather'
 
       ##
-      # The base URL of the Google weather API.
-      #
-      # @since  2012-07-08
-      # @return [String]
-      #
-      API_URL = 'http://www.google.com/ig/api'
-
-      ##
       # Retrieves the weather for the specified location. If no location is
       # given the last used location for the user is used (if any).
       #
@@ -31,6 +23,13 @@ module Hermes
       #  forecast.
       #
       def execute(message, location)
+        if config[:key].nil? or config[:key].empty?
+          message.reply("No API key set")
+          return
+        end
+
+        @wunder ||= Wunderground.new(config[:key])
+
         nick              = message.user.nick
         channel           = message.channel.to_s
         existing_location = Model::WeatherLocation[
@@ -49,40 +48,21 @@ module Hermes
           end
         end
 
-        response = HTTP.get(API_URL, :weather => location)
+        begin
+          resp = @wunder.conditions_for(location)['current_observation']
 
-        if !response.success?
-          message.reply(
-            "Failed to retrieve the weather forecast, HTTP status: " \
-              "#{response.status}",
-            true
-          )
+          city      = "#{resp['display_location']['city']}/#{resp['display_location']['country_iso3166']}"
+          condition = resp['weather']
+          temp_f    = resp['temp_f']
+          temp_c    = resp['temp_c']
+          humidity  = resp['relative_humidity']
+          wind      = resp['wind_string']
 
-          return
+          reply = '%s: %s, %sF/%sC %s, %s' % \
+                  [city, condition, temp_f, temp_c, humidity, wind]
+        rescue
+          reply = "Unable to complete lookup"
         end
-
-        document = Nokogiri::XML(response.body)
-
-        if document.css('weather problem_cause').length > 0
-          message.reply('Failed to retrieve the weather forecast', true)
-
-          return
-        end
-
-        city = document.css('weather forecast_information city').attr('data')
-
-        current   = document.css('weather current_conditions')
-        condition = current.css('condition').attr('data')
-        temp_f    = current.css('temp_f').attr('data')
-        temp_c    = current.css('temp_c').attr('data')
-        humidity  = current.css('humidity').attr('data')
-        wind      = current.css('wind_condition').attr('data')
-        forecast  = document.css('weather forecast_conditions')[0]
-        high      = forecast.css('high').attr('data')
-        low       = forecast.css('low').attr('data')
-
-        reply = '%s: %s, %sF/%sC (H:%s, L:%s), %s, %s' % \
-          [city, condition, temp_f, temp_c, high, low, humidity, wind]
 
         if existing_location
           existing_location.update(:location => location)

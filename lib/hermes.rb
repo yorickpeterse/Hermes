@@ -10,6 +10,7 @@ require 'sanitize'
 require 'sequel'
 require 'twitter'
 require 'youtube_it'
+require 'wunderground'
 
 $:.unshift(File.expand_path('../', __FILE__))
 
