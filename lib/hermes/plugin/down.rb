@@ -37,7 +37,7 @@ module Hermes
         else
           message.reply(
             "The URL #{url} doesn't seem to be working. " \
-              "HTTP response: #{response.status} #{response.message}",
+              "HTTP status: #{response.status}",
             true
           )
         end
