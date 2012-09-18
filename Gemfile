@@ -10,6 +10,7 @@ gem 'sequel'
 gem 'shebang'
 gem 'twitter'
 gem 'youtube_it'
+gem 'wunderground'
 
 group :production do
   gem 'pg'
