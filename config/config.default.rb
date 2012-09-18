@@ -6,6 +6,9 @@ Hermes.bot.configure do |c|
   # Plugin configuration.
   c.plugins.prefix  = '.'
   c.plugins.plugins = Hermes::DEFAULT_PLUGINS
+
+  # Wunderground API key for weather plugin
+  c.plugins.options[Hermes::Plugin::Weather] = {:key => ''}
 end
 
 Hermes.bot.loggers.level = :info
