@@ -24,7 +24,8 @@ module Hermes
       #
       def execute(message, location)
         if config[:key].nil? or config[:key].empty?
-          message.reply("No API key set")
+          message.reply('No Wunderground API key has been set', true)
+
           return
         end
 
@@ -48,21 +49,44 @@ module Hermes
           end
         end
 
+        # Dumbass Wunderground gem doesn't URL encode the weather location so
+        # this has to be done manually.
+        location = URI.encode(location)
+
         begin
-          resp = @wunder.conditions_for(location)['current_observation']
-
-          city      = "#{resp['display_location']['city']}/#{resp['display_location']['country_iso3166']}"
-          condition = resp['weather']
-          temp_f    = resp['temp_f']
-          temp_c    = resp['temp_c']
-          humidity  = resp['relative_humidity']
-          wind      = resp['wind_string']
-
-          reply = '%s: %s, %sF/%sC %s, %s' % \
-                  [city, condition, temp_f, temp_c, humidity, wind]
-        rescue
-          reply = "Unable to complete lookup"
+          resp = @wunder.conditions_for(location)
+        rescue => e
+          reply = "Unable to retrieve the weather forecast: #{e.message}"
         end
+
+        if !resp or !resp.key?('current_observation')
+          message.reply(
+            'No weather forecast could be retrieved as the Wunderground ' \
+              'API response was empty',
+            true
+          )
+
+          return
+        end
+
+        resp = resp['current_observation']
+        city = "#{resp['display_location']['city']}" \
+          "/#{resp['display_location']['country_iso3166']}"
+
+        condition = resp['weather']
+        temp_f    = resp['temp_f']
+        temp_c    = resp['temp_c']
+        humidity  = resp['relative_humidity']
+        wind      = resp['wind_string']
+
+        reply = '%s: %s | Temperature: %sF/%sC | Humidity: %s | Wind: %s' % [
+          city,
+          condition,
+          temp_f,
+          temp_c,
+          humidity,
+          wind
+        ]
 
         if existing_location
           existing_location.update(:location => location)
