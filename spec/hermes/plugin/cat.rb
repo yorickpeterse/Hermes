@@ -11,7 +11,7 @@ describe 'Hermes::Plugin::Cat' do
 
     date.is_a?(Time).should == true
 
-    date.strftime('%Y-%m-%d %H:%M').should == '2012-06-21 23:01'
+    date.strftime('%Y-%m-%d').should == '2012-06-21'
   end
 
   it "Retrieve the latest cat picture/video from katy's feed" do
@@ -26,7 +26,7 @@ describe 'Hermes::Plugin::Cat' do
 
     date.is_a?(Time).should == true
 
-    date.strftime('%Y-%m-%d %H:%M').should == '2012-06-27 17:15'
+    date.strftime('%Y-%m-%d').should == '2012-06-27'
   end
 
   it "Retrieve the latest cat picture/video from nirix's feed" do
@@ -39,6 +39,6 @@ describe 'Hermes::Plugin::Cat' do
 
     date.is_a?(Time).should == true
 
-    date.strftime('%Y-%m-%d %H:%M').should == '2012-09-17 08:25'
+    date.strftime('%Y-%m-%d').should == '2012-09-17'
   end
 end
