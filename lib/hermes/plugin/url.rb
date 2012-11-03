@@ -144,7 +144,7 @@ module Hermes
           last_posted = row.last_posted_at.to_time
           diff        = Time.now.to_i - last_posted.to_i
 
-          if row.last_posted_at.to_time >= yesterday and diff > 5
+          if row.last_posted_at.to_time >= yesterday and diff > 5 and message.user.nick != row.last_nick
             segments << "Last posted by %s on %s, pay attention dumbass!" % [
               row.last_nick,
               row.last_posted_at.strftime(Hermes::DATE_TIME_FORMAT)
