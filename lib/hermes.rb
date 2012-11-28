@@ -75,7 +75,7 @@ module Hermes
   # @since  2012-08-24
   # @return [Hash]
   #
-  REQUEST_OPTIONS = {:timeout => 10}
+  REQUEST_OPTIONS = {:timeout => 15}
 
   ##
   # Hash containing configuration options for SSL.
