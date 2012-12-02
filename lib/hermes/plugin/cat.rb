@@ -33,6 +33,14 @@ module Hermes
         'jwa'           => Hermes::Plugin::Cat::Jwa
       }
 
+      ##
+      # The minimum length of a URL before a short URL should be created.
+      #
+      # @since  2012-12-02
+      # @return [Fixnum]
+      #
+      SHORTEN_LENGTH = 45
+
       match /cat\s+(\S+)/
 
       ##
@@ -72,6 +80,10 @@ module Hermes
 
         if url and title and date
           formatted_date = date.strftime(Hermes::DATE_TIME_FORMAT)
+
+          if url.length >= SHORTEN_LENGTH
+            url = shorten_url(url)
+          end
 
           message.reply("#{title} at #{formatted_date}: #{url}", true)
         else
