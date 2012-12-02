@@ -2,6 +2,7 @@ require 'hermes/plugin/cat/sax_helper'
 require 'hermes/plugin/cat/yorickpeterse'
 require 'hermes/plugin/cat/katylava'
 require 'hermes/plugin/cat/nirix'
+require 'hermes/plugin/cat/jwa'
 require 'time'
 
 module Hermes
@@ -28,8 +29,17 @@ module Hermes
       FEEDS = {
         'yorickpeterse' => Hermes::Plugin::Cat::Yorickpeterse,
         'katylava'      => Hermes::Plugin::Cat::Katylava,
-        'nirix'         => Hermes::Plugin::Cat::Nirix
+        'nirix'         => Hermes::Plugin::Cat::Nirix,
+        'jwa'           => Hermes::Plugin::Cat::Jwa
       }
+
+      ##
+      # The minimum length of a URL before a short URL should be created.
+      #
+      # @since  2012-12-02
+      # @return [Fixnum]
+      #
+      SHORTEN_LENGTH = 45
 
       match /cat\s+(\S+)/
 
@@ -70,6 +80,10 @@ module Hermes
 
         if url and title and date
           formatted_date = date.strftime(Hermes::DATE_TIME_FORMAT)
+
+          if url.length >= SHORTEN_LENGTH
+            url = shorten_url(url)
+          end
 
           message.reply("#{title} at #{formatted_date}: #{url}", true)
         else
