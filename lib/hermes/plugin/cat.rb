@@ -2,6 +2,7 @@ require 'hermes/plugin/cat/sax_helper'
 require 'hermes/plugin/cat/yorickpeterse'
 require 'hermes/plugin/cat/katylava'
 require 'hermes/plugin/cat/nirix'
+require 'hermes/plugin/cat/jwa'
 require 'time'
 
 module Hermes
@@ -28,7 +29,8 @@ module Hermes
       FEEDS = {
         'yorickpeterse' => Hermes::Plugin::Cat::Yorickpeterse,
         'katylava'      => Hermes::Plugin::Cat::Katylava,
-        'nirix'         => Hermes::Plugin::Cat::Nirix
+        'nirix'         => Hermes::Plugin::Cat::Nirix,
+        'jwa'           => Hermes::Plugin::Cat::Jwa
       }
 
       match /cat\s+(\S+)/
