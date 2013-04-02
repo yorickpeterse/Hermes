@@ -1,4 +1,4 @@
-source :rubygems
+source 'https://rubygems.org/'
 
 gem 'cinch'
 gem 'faraday'
@@ -7,7 +7,6 @@ gem 'nokogiri'
 gem 'rake'
 gem 'sanitize'
 gem 'sequel'
-gem 'shebang'
 gem 'twitter'
 gem 'youtube_it'
 gem 'wunderground'
@@ -18,6 +17,7 @@ end
 
 group :development do
   gem 'bacon'
+  gem 'bacon-colored_output'
   gem 'sqlite3'
   gem 'webmock'
 end

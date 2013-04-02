@@ -1,7 +1,5 @@
 #!/usr/bin/env ruby
 
-require 'shebang'
 require File.expand_path('../../app', __FILE__)
-require 'hermes/command/default'
 
-Shebang.run
+Hermes.start
