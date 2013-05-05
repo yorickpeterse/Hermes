@@ -1,5 +1,10 @@
 #!/usr/bin/env ruby
 
 require File.expand_path('../../app', __FILE__)
+require 'dante'
 
-Hermes.start
+pid = File.expand_path('../../tmp/hermes.pid', __FILE__)
+
+Dante.run 'hermes', :pid_path => pid do
+  Hermes.start
+end

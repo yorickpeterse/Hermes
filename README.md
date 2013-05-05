@@ -1,9 +1,8 @@
 # Hermes
 
-A simple IRC bot written using Cinch primarily written to replace the dated
-"forrstdotcom" bot (based on Skybot) in `#forrst-chat` on the Freenode network.
-The bot is capable of showing Google search results, storing quotes, displaying
-website titles (along with shortening the URLs) and much more.
+Hermes is an IRC bot that annoys people in `#webdevs` (previously
+`#forrst-chat`) on Freenode. It was originally written to replace the
+"forrstdotcom" bot.
 
 ## Features
 

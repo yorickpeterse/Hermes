@@ -141,15 +141,6 @@ module Hermes
         trap(sig) { stop }
       end
 
-      # FIXME: Temporary hack because I'm lazy.
-      Process.daemon(true)
-
-      pidfile = File.expand_path('../../tmp/hermes.pid', __FILE__)
-
-      File.open(pidfile, 'w') do |handle|
-        handle.write(Process.pid.to_s)
-      end
-
       @bot.start
     end
 

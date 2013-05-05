@@ -10,6 +10,7 @@ gem 'sequel'
 gem 'twitter'
 gem 'youtube_it'
 gem 'wunderground'
+gem 'dante'
 
 group :production do
   gem 'pg'

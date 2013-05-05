@@ -1,10 +1,13 @@
 #!/usr/bin/env bash
 set -e
 
+echo 'Updating codebase...'
+
 bundle install
 
-rake db:migrate --trace
+bundle exec rake db:migrate --trace
 
-if [[ -f tmp/hermes.pid ]]; then
-    kill `cat tmp/hermes.pid`
-fi
+echo 'Restarting daemon...'
+
+ruby ./bin/hermes -k
+ruby ./bin/hermes -d
