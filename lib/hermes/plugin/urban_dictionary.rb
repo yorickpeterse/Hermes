@@ -6,12 +6,11 @@ module Hermes
     class UrbanDictionary
       include Cinch::Plugin
 
-      set :help => 'u/urban [TERM] - Retrieves the definition of a term ' \
+      set :help => 'u/ud/urban [TERM] - Retrieves the definition of a term ' \
         'using Urban Dictionary',
         :plugin_name => 'urban'
 
-      match /u\s+(.+)/,     :method => :execute
-      match /urban\s+(.+)/, :method => :execute
+      match /(u|ud|urban)\s+(.+)/, :method => :execute
 
       ##
       # The URL to send HTTP requests to.
@@ -24,9 +23,10 @@ module Hermes
       # Executes the plugin.
       #
       # @param [Cinch::Message] message
+      # @param [String] command The command that was used to query UD.
       # @param [String] term The term to look for.
       #
-      def execute(message, term)
+      def execute(message, command, term)
         begin
           response = HTTP.get(URL, :term => term)
         rescue e
@@ -68,7 +68,7 @@ module Hermes
         else
           message.reply(
             "Failed to retrieve the definition: " \
-              "#{response.status} #{response.message}",
+              "#{response.status} #{response.body}",
             true
           )
         end
