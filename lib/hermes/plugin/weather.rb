@@ -6,7 +6,7 @@ module Hermes
     class Weather
       include Cinch::Plugin
 
-      match /weather\s*(.*)/
+      match(/weather\s*(.*)/)
 
       set :help => 'weather [LOCATION] - Retrieves the weather forecast',
         :plugin_name => 'weather'

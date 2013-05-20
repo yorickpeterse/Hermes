@@ -26,7 +26,7 @@ module Hermes
         'nirix'         => Hermes::Plugin::Cat::Nirix
       }
 
-      match /cat\s+(\S+)/
+      match(/cat\s+(\S+)/)
 
       ##
       # Executes the plugin.
@@ -50,10 +50,10 @@ module Hermes
 
         response = HTTP.get(FEEDS[feed]::URL)
 
-        unless response.success?
+        unless response.ok?
           message.reply(
             "Failed to retrieve the feed data. HTTP response: " \
-              "#{response.code} #{response.message}",
+              "#{response.code} #{response.body}",
             true
           )
 

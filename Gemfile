@@ -1,8 +1,7 @@
 source 'https://rubygems.org/'
 
 gem 'cinch'
-gem 'faraday'
-gem 'faraday_middleware'
+gem 'httpclient'
 gem 'nokogiri'
 gem 'rake'
 gem 'sanitize'
@@ -18,8 +17,5 @@ group :production do
 end
 
 group :development do
-  gem 'bacon'
-  gem 'bacon-colored_output'
   gem 'sqlite3'
-  gem 'webmock'
 end

@@ -13,7 +13,7 @@ module Hermes
 
       listen_to :message
 
-      match /tell\s+(\S+)\s+(.+)/
+      match(/tell\s+(\S+)\s+(.+)/)
 
       ##
       # Checks if there's a message stored for the user that wrote the

@@ -12,8 +12,8 @@ module Hermes
         'for the query',
         :plugin_name => 'youtube'
 
-      match /y\s+(.+)/,       :method => :execute
-      match /youtube\s+(.+)/, :method => :execute
+      match(/y\s+(.+)/,       :method => :execute)
+      match(/youtube\s+(.+)/, :method => :execute)
 
       listen_to :message
 

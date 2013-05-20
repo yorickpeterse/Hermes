@@ -11,7 +11,7 @@ module Hermes
         'or lists all available commands',
         :plugin_name => 'help'
 
-      match /help$/
+      match(/help$/)
 
       ##
       # Executes the plugin.

@@ -9,7 +9,7 @@ module Hermes
       set :help => 'down [HOST] - Checks if a website is down or not.',
         :plugin_name => 'down'
 
-      match /down\s+(\S+)/
+      match(/down\s+(\S+)/)
 
       ##
       # Array of status numbers that are used for a valid HTTP response.
@@ -46,7 +46,7 @@ module Hermes
         else
           message.reply(
             "The URL #{url} doesn't seem to be working. " \
-              "HTTP status: #{response.status}",
+              "HTTP status: #{response.code}",
             true
           )
         end

@@ -11,8 +11,8 @@ module Hermes
         'randomly selected quote or the nth quote of a user',
         :plugin_name => 'quote'
 
-      match /q\s+(.+)/,     :method => :execute
-      match /quote\s+(.+)/, :method => :execute
+      match(/q\s+(.+)/,     :method => :execute)
+      match(/quote\s+(.+)/, :method => :execute)
 
       ##
       # IRC users that require some extra care.

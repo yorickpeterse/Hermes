@@ -43,16 +43,17 @@ module Hermes
       #
       # @param  [String] url The URL to shorten.
       # @return [String]
-      # @raise  [Faraday::Error::ClientError] Raised when the URL could not be
-      #  shortened.
       #
       def shorten_url(url)
-        response = HTTP.get(IS_GD_URL, :format => :simple, :url => url)
+        response = HTTP.get(
+          IS_GD_URL,
+          :query => {:format => :simple, :url => url}
+        )
 
-        if response.success? and !response.body.include?('error: please')
+        if response.ok? and !response.body.include?('error: please')
           return response.body.strip
         else
-          raise(Faraday::Error::ClientError, response.body)
+          raise response.body
         end
       end
     end # URL

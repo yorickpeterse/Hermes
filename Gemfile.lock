@@ -2,21 +2,16 @@ GEM
   remote: https://rubygems.org/
   specs:
     addressable (2.3.4)
-    bacon (1.2.0)
-    bacon-colored_output (1.0.1)
-      bacon
     builder (3.2.0)
     cinch (2.0.4)
-    crack (0.3.2)
     dante (0.1.5)
     faraday (0.8.7)
       multipart-post (~> 1.1)
-    faraday_middleware (0.9.0)
-      faraday (>= 0.7.4, < 0.9)
     httparty (0.11.0)
       multi_json (~> 1.0)
       multi_xml (>= 0.5.2)
     httpauth (0.2.0)
+    httpclient (2.3.3)
     json (1.8.0)
     jwt (0.1.8)
       multi_json (>= 1.5)
@@ -44,9 +39,6 @@ GEM
       faraday (~> 0.8, < 0.10)
       multi_json (~> 1.0)
       simple_oauth (~> 0.2)
-    webmock (1.11.0)
-      addressable (>= 2.2.7)
-      crack (>= 0.3.2)
     wunderground (1.1.0)
       addressable
       httparty (> 0.6.0)
@@ -63,12 +55,9 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  bacon
-  bacon-colored_output
   cinch
   dante
-  faraday
-  faraday_middleware
+  httpclient
   json
   nokogiri
   pg
@@ -77,6 +66,5 @@ DEPENDENCIES
   sequel
   sqlite3
   twitter
-  webmock
   wunderground
   youtube_it

@@ -4,14 +4,15 @@ require 'time'
 
 require 'json'
 require 'cinch'
-require 'faraday'
-require 'faraday_middleware'
+require 'httpclient'
 require 'nokogiri'
 require 'sanitize'
 require 'sequel'
 require 'twitter'
 require 'youtube_it'
 require 'wunderground'
+
+require_relative 'hermes/http'
 
 # Load all the helpers and plugins.
 ['helper', 'plugin'].each do |directory|
@@ -61,32 +62,11 @@ module Hermes
     Hermes::Plugin::Weather,
     Hermes::Plugin::Twitter,
     Hermes::Plugin::Wikipedia,
-    Hermes::Plugin::Youtube
+    Hermes::Plugin::Youtube,
+    Hermes::Plugin::Eval
   ]
 
-  ##
-  # Hash containing request configuration options for Faraday.
-  #
-  # @return [Hash]
-  #
-  REQUEST_OPTIONS = {:timeout => 15}
-
-  ##
-  # Hash containing configuration options for SSL.
-  #
-  # @return [Hash]
-  #
-  SSL_OPTIONS = {:verify_mode => OpenSSL::SSL::VERIFY_NONE}
-
-  ##
-  # The Faraday connection to use.
-  #
-  # @return [Faraday::Connection]
-  #
-  HTTP = Faraday.new(:request => REQUEST_OPTIONS, :ssl => SSL_OPTIONS) do |f|
-    f.response :follow_redirects
-    f.adapter  Faraday.default_adapter
-  end
+  HTTP = Hermes::HTTP.new
 
   class << self
     ##

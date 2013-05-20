@@ -11,9 +11,9 @@ module Hermes
         'gis [QUERY] - Returns the first result of Google images',
         :plugin_name => 'google'
 
-      match /gis\s+(.+)/, :method => :image_search
-      match /g\s+(.+)/, :method => :execute
-      match /google\s(.+)/, :method => :execute
+      match(/gis\s+(.+)/, :method => :image_search)
+      match(/g\s+(.+)/, :method => :execute)
+      match(/google\s(.+)/, :method => :execute)
 
       ##
       # The Google API URL.
@@ -76,13 +76,13 @@ module Hermes
       #
       def search(type, query)
         begin
-          response = HTTP.get(URL % type, :q => query)
+          response, json = HTTP.get_json(URL % type, :query => {:q => query})
         rescue
           return false
         end
 
-        if response.success?
-          return JSON.load(response.body)['responseData']['results'][0]
+        if response.ok?
+          return json['responseData']['results'][0]
         else
           return false
         end

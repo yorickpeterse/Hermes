@@ -11,8 +11,8 @@ module Hermes
         ' | ?[WORD] - Displays the text of the specified word',
         :plugin_name => 'rem'
 
-      match /rem\s+(\S+)\s+(.+)/, :method => :set
-      match /\?(\S+)\s*(\S*)/, :method => :get, :prefix => ''
+      match(/rem\s+(\S+)\s+(.+)/, :method => :set)
+      match(/\?(\S+)\s*(\S*)/, :method => :get, :prefix => '')
 
       ##
       # Stores a new word or updates an existing one.

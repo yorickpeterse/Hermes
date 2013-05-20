@@ -10,7 +10,7 @@ module Hermes
         'using Urban Dictionary',
         :plugin_name => 'urban'
 
-      match /(u|ud|urban)\s+(.+)/, :method => :execute
+      match(/(u|ud|urban)\s+(.+)/, :method => :execute)
 
       ##
       # The URL to send HTTP requests to.
@@ -28,14 +28,14 @@ module Hermes
       #
       def execute(message, command, term)
         begin
-          response = HTTP.get(URL, :term => term)
+          response = HTTP.get(URL, :query => {:term => term})
         rescue e
           message.reply("Failed to get the definition: #{e.message}", true)
 
           return
         end
 
-        if response.success?
+        if response.ok?
           json = JSON.load(response.body)
 
           if json['list'][0]

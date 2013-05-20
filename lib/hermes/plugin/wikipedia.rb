@@ -6,8 +6,8 @@ module Hermes
     class Wikipedia
       include Cinch::Plugin
 
-      match /w\s+(.+)/,    :method => :execute
-      match /wiki\s+(.+)/, :method => :execute
+      match(/w\s+(.+)/,    :method => :execute)
+      match(/wiki\s+(.+)/, :method => :execute)
 
       ##
       # The URL of Wikipedia's search system.
@@ -15,8 +15,6 @@ module Hermes
       # @return [String]
       #
       URL = 'http://en.wikipedia.org/w/api.php'
-
-      # ?action=opensearch&format=xml
 
       ##
       # Searches Wikipedia for the given query.
@@ -27,13 +25,15 @@ module Hermes
       def execute(message, query)
         response = HTTP.get(
           URL,
-          :format => 'xml',
-          :action => 'opensearch',
-          :search => query,
-          :limit  => 1
+          :query => {
+            :format => 'xml',
+            :action => 'opensearch',
+            :search => query,
+            :limit  => 1
+          }
         )
 
-        if !response.success?
+        unless response.ok?
           message.reply(
             "Failed to query Wikipedia: #{response.status} " \
               "#{response.message}",
