@@ -48,7 +48,7 @@ module Hermes
           )
         end
 
-        response = HTTP.get(FEEDS[feed]::URL)
+        response = Hermes.http.get(FEEDS[feed]::URL)
 
         unless response.ok?
           message.reply(

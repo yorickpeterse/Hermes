@@ -28,7 +28,7 @@ module Hermes
       #
       def execute(message, command, term)
         begin
-          response = HTTP.get(URL, :query => {:term => term})
+          response = Hermes.http.get(URL, :query => {:term => term})
         rescue e
           message.reply("Failed to get the definition: #{e.message}", true)
 

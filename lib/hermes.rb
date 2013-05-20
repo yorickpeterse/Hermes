@@ -66,14 +66,18 @@ module Hermes
     Hermes::Plugin::Eval
   ]
 
-  HTTP = Hermes::HTTP.new
-
   class << self
     ##
     # The database connection to use.
     #
-    #
     attr_reader :database
+
+    ##
+    # @return [Hermes::HTTP]
+    #
+    def http
+      return @http ||= HTTP.new
+    end
 
     ##
     # Sets the database connection and loads all the models.

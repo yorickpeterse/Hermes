@@ -76,7 +76,10 @@ module Hermes
       #
       def search(type, query)
         begin
-          response, json = HTTP.get_json(URL % type, :query => {:q => query})
+          response, json = Hermes.http.get_json(
+            URL % type,
+            :query => {:q => query}
+          )
         rescue
           return false
         end

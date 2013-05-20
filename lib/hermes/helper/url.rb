@@ -20,7 +20,7 @@ module Hermes
       # @return [String]
       #
       def url_title(url)
-        response = HTTP.get(url)
+        response = Hermes.http.get(url)
 
         # Skip non HTML responses.
         if response.headers['content-type'] \
@@ -45,7 +45,7 @@ module Hermes
       # @return [String]
       #
       def shorten_url(url)
-        response = HTTP.get(
+        response = Hermes.http.get(
           IS_GD_URL,
           :query => {:format => :simple, :url => url}
         )

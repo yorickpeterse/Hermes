@@ -31,7 +31,7 @@ module Hermes
         end
 
         begin
-          response = HTTP.head(url)
+          response = Hermes.http.head(url)
         rescue => e
           message.reply(
             "The URL #{url} doesn't seem to be working: #{e.message}",

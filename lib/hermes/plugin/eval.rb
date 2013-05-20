@@ -54,7 +54,7 @@ module Hermes
 
         begin
           fields   = {:lang => language, :code => code, :execute => '1'}
-          response = HTTP.post(URL, :body => fields)
+          response = Hermes.http.post(URL, :body => fields)
         rescue => error
           message.reply("Failed to submit the code: #{error.message}", true)
 
@@ -64,7 +64,7 @@ module Hermes
         url = response.headers['Location'].to_s
 
         if response.code == 302 and !url.empty?
-          response, json = HTTP.get_json(url + '.json')
+          response, json = Hermes.http.get_json(url + '.json')
           output         = json['output'].split("\n")[0]
 
           message.reply("=> #{output} | #{url}", true)

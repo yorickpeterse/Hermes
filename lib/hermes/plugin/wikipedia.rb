@@ -23,7 +23,7 @@ module Hermes
       # @param [String] query The search query.
       #
       def execute(message, query)
-        response = HTTP.get(
+        response = Hermes.http.get(
           URL,
           :query => {
             :format => 'xml',
