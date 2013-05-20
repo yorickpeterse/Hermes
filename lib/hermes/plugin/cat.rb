@@ -9,7 +9,6 @@ module Hermes
     # The Cat plugin retrieves the latest cat picture or video from a list of
     # pre-defined Atom/RSS feeds.
     #
-    #
     class Cat
       include Cinch::Plugin
 

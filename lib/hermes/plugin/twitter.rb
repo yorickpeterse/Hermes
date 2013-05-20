@@ -3,7 +3,6 @@ module Hermes
     ##
     # Plugin for retrieving tweets based on usernames, hash tags or tweet IDs.
     #
-    #
     class Twitter
       include Cinch::Plugin
 

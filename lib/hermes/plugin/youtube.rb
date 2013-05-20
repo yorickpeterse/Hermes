@@ -4,7 +4,6 @@ module Hermes
     # Plugin that allows users to query Youtube and retrieves video details
     # whenever a link to Youtube is posted.
     #
-    #
     class Youtube
       include Cinch::Plugin
       include Helper::Message

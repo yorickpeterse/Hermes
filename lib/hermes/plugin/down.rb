@@ -3,7 +3,6 @@ module Hermes
     ##
     # Checks if a given website is responding or not using a HEAD request.
     #
-    #
     class Down
       include Cinch::Plugin
 

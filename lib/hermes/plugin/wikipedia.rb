@@ -1,8 +1,7 @@
 module Hermes
   module Plugin
     ##
-    # Plugin for search Wikipedia.
-    #
+    # Plugin for searching Wikipedia.
     #
     class Wikipedia
       include Cinch::Plugin

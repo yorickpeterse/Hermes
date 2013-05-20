@@ -4,7 +4,6 @@ module Hermes
     # Plugin that retrieves all the available plugin names and displays them to
     # the user.
     #
-    #
     class Help
       include Cinch::Plugin
 

@@ -4,7 +4,6 @@ module Hermes
     # Allows users to perform a Google search. Users can search for text and
     # image results, in both cases on the first result is returned.
     #
-    #
     class Google
       include Cinch::Plugin
 

@@ -3,7 +3,6 @@ module Hermes
     ##
     # Plugin that allows users to store quotes of other users.
     #
-    #
     class Quote
       include Cinch::Plugin
 

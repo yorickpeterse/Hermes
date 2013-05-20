@@ -3,7 +3,6 @@ module Hermes
     ##
     # Plugin that allows users to retrieve definitions from Urban Dictionary.
     #
-    #
     class UrbanDictionary
       include Cinch::Plugin
 

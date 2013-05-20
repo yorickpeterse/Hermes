@@ -3,7 +3,6 @@ module Hermes
     ##
     # Plugin that retrieves the weather forecast for a given location.
     #
-    #
     class Weather
       include Cinch::Plugin
 

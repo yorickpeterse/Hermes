@@ -5,7 +5,6 @@ module Hermes
     # yells at users for posting the same URL multiple times in a short
     # timespan.
     #
-    #
     class URL
       include Cinch::Plugin
       include Helper::URL

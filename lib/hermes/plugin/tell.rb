@@ -4,7 +4,6 @@ module Hermes
     # Plugin that allows users to store messages in the bot's database. These
     # messages will be sent to a user the next time he/she speaks in a channel.
     #
-    #
     class Tell
       include Cinch::Plugin
 

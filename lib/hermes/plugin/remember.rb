@@ -4,7 +4,6 @@ module Hermes
     # Plugin that allows users to store words and custom text associated with
     # these words. This text can be URLs, descriptions, shell commands, etc.
     #
-    #
     class Remember
       include Cinch::Plugin
 
