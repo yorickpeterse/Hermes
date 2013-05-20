@@ -9,5 +9,5 @@ bundle exec rake db:migrate --trace
 
 echo 'Restarting daemon...'
 
-ruby ./bin/hermes -k
-ruby ./bin/hermes -d
+bundle exec ruby ./bin/hermes -k
+bundle exec ruby ./bin/hermes -d
