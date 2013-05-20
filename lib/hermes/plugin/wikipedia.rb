@@ -3,7 +3,6 @@ module Hermes
     ##
     # Plugin for search Wikipedia.
     #
-    # @since 2012-07-08
     #
     class Wikipedia
       include Cinch::Plugin
@@ -14,7 +13,6 @@ module Hermes
       ##
       # The URL of Wikipedia's search system.
       #
-      # @since  2012-07-08
       # @return [String]
       #
       URL = 'http://en.wikipedia.org/w/api.php'
@@ -24,7 +22,6 @@ module Hermes
       ##
       # Searches Wikipedia for the given query.
       #
-      # @since 2012-07-08
       # @param [Cinch::Message] message
       # @param [String] query The search query.
       #

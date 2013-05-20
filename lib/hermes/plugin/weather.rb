@@ -3,7 +3,6 @@ module Hermes
     ##
     # Plugin that retrieves the weather forecast for a given location.
     #
-    # @since 2012-07-08
     #
     class Weather
       include Cinch::Plugin
@@ -17,7 +16,6 @@ module Hermes
       # Retrieves the weather for the specified location. If no location is
       # given the last used location for the user is used (if any).
       #
-      # @since 2012-07-08
       # @param [Cinch::Message] message
       # @param [String] location The location for which to retrieve the weather
       #  forecast.

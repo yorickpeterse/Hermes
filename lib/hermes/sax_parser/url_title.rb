@@ -3,13 +3,11 @@ module Hermes
     ##
     # SAX parser for extracting the title of a webpage.
     #
-    # @since 2012-07-06
     #
     class URLTitle < Nokogiri::XML::SAX::Document
       ##
       # The title of the current document.
       #
-      # @since  2012-07-06
       # @return [String]
       #
       attr_reader :title
@@ -17,7 +15,6 @@ module Hermes
       ##
       # Called whenever a new element was found.
       #
-      # @since 2012-07-06
       # @param [String] name The name of the element.
       # @param [Array] attrs An array of attributes.
       #
@@ -28,7 +25,6 @@ module Hermes
       ##
       # Called when processing a text node.
       #
-      # @since 2012-07-06
       # @param [String] text The text of the current node.
       #
       def characters(text)

@@ -4,7 +4,6 @@ module Hermes
     # Plugin that allows users to store messages in the bot's database. These
     # messages will be sent to a user the next time he/she speaks in a channel.
     #
-    # @since 2012-07-06
     #
     class Tell
       include Cinch::Plugin
@@ -25,7 +24,6 @@ module Hermes
       # The messages database table is only checked if 5 seconds have passed
       # between the current and last message in order to reduce the load.
       #
-      # @since 2012-07-06
       # @param [Cinch::Message] message
       #
       def listen(message)
@@ -54,7 +52,6 @@ module Hermes
       ##
       # Stores a message for a user.
       #
-      # @since 2012-07-06
       # @param [Cinch::Message] message
       # @param [String] nick The nick of the receiver.
       # @param [String] text The message to store.

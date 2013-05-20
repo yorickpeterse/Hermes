@@ -4,7 +4,6 @@ module Hermes
     # Plugin that allows users to store words and custom text associated with
     # these words. This text can be URLs, descriptions, shell commands, etc.
     #
-    # @since 2012-07-05
     #
     class Remember
       include Cinch::Plugin
@@ -19,7 +18,6 @@ module Hermes
       ##
       # Stores a new word or updates an existing one.
       #
-      # @since 2012-07-05
       # @param [Cinch::Message] message
       # @param [String] word The word to remember.
       # @param [String] text The text of the word.
@@ -53,7 +51,6 @@ module Hermes
       ##
       # Retrieves a word from the database.
       #
-      # @since 2012-07-05
       # @param [Cinch::Message] message
       # @param [String] word The word for which to retrieve the text.
       # @param [String] prefix A string that has to be displayed before the

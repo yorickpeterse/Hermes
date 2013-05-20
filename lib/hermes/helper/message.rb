@@ -3,13 +3,11 @@ module Hermes
     ##
     # Helper for dealing with IRC messages.
     #
-    # @since 2012-07-26
     #
     module Message
       ##
       # Returns true if the message is a valid plugin command.
       #
-      # @since  2012-07-26
       # @param  [String] message The message to verify.
       # @return [TrueClass|FalseClass]
       #

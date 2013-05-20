@@ -9,7 +9,6 @@ module Hermes
     # The Cat plugin retrieves the latest cat picture or video from a list of
     # pre-defined Atom/RSS feeds.
     #
-    # @since 2012-06-27
     #
     class Cat
       include Cinch::Plugin
@@ -21,7 +20,6 @@ module Hermes
       ##
       # Hash containing the available feeds and their parsers.
       #
-      # @since  2012-06-27
       # @return [Hash]
       #
       FEEDS = {
@@ -35,7 +33,6 @@ module Hermes
       ##
       # Executes the plugin.
       #
-      # @since 2012-06-27
       # @param [Cinch::Message] message
       # @param [String] feed The name of the feed to process.
       #

@@ -4,7 +4,6 @@ module Hermes
     # Allows users to perform a Google search. Users can search for text and
     # image results, in both cases on the first result is returned.
     #
-    # @since 2012-06-30
     #
     class Google
       include Cinch::Plugin
@@ -20,7 +19,6 @@ module Hermes
       ##
       # The Google API URL.
       #
-      # @since  2012-06-30
       # @return [String]
       #
       URL = 'http://ajax.googleapis.com/ajax/services/search/%s?v=1.0&safe=off'
@@ -28,7 +26,6 @@ module Hermes
       ##
       # Returns the first result of Google.
       #
-      # @since 2012-06-30
       # @param [Cinch::Message] message
       # @param [String] query The search query.
       #
@@ -39,7 +36,6 @@ module Hermes
       ##
       # Returns the first result of Google images.
       #
-      # @since 2012-06-30
       # @see   Hermes::Plugin::Google#execute
       #
       def image_search(message, query)
@@ -51,7 +47,6 @@ module Hermes
       ##
       # Displays a single search result.
       #
-      # @since 2012-06-30
       # @param [Cinch::Message] message
       # @param [Hash] result
       # @param [TrueClass|FalseClass] include_content
@@ -76,7 +71,6 @@ module Hermes
       ##
       # Queries Google and returns the first result.
       #
-      # @since  2012-06-30
       # @param  [String] type The search type.
       # @param  [String] query The search query.
       # @return [Hash|FalseClass]

@@ -3,7 +3,6 @@ module Hermes
     ##
     # Plugin that allows users to store quotes of other users.
     #
-    # @since 2012-07-05
     #
     class Quote
       include Cinch::Plugin
@@ -19,7 +18,6 @@ module Hermes
       ##
       # IRC users that require some extra care.
       #
-      # @since  2012-07-06
       # @return [Array]
       #
       SPECIAL_USERS = ['davzie']
@@ -27,7 +25,6 @@ module Hermes
       ##
       # Regex to use for matching commands that should store new quotes.
       #
-      # @since  2012-07-06
       # @return [Regexp]
       #
       SET_REGEX = /add\s+(\S+)\s+(.+)/
@@ -36,7 +33,6 @@ module Hermes
       # Regex to use for matching commands that should retrieve existing
       # quotes.
       #
-      # @since  2012-07-06
       # @return [Regexp]
       #
       GET_REGEX = /(\#{1,2}\S+\s+)*(\S+)\s*(\d*)/
@@ -45,7 +41,6 @@ module Hermes
       # Executes the plugin and determines whether a quote should be stored or
       # displayed.
       #
-      # @since 2012-07-06
       # @param [Cinch::Message] message
       # @param [String] command The quote command.
       #
@@ -68,7 +63,6 @@ module Hermes
       ##
       # Stores a new quote.
       #
-      # @since 2012-07-05
       # @param [Cinch::Message] message
       # @param [String] nick The nick of the user for which to add the quote.
       # @param [String] quote The quote to add.
@@ -105,7 +99,6 @@ module Hermes
       ##
       # Retrieves a random or specific quote of the specified user.
       #
-      # @since 2012-07-05
       # @param [Cinch::Message] message
       # @param [String] channel The channel of the quote.
       # @param [String] nick The name of the user for which to retrieve a

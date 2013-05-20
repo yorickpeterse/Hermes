@@ -4,7 +4,6 @@ module Hermes
     # Plugin that allows users to query Youtube and retrieves video details
     # whenever a link to Youtube is posted.
     #
-    # @since 2012-07-09
     #
     class Youtube
       include Cinch::Plugin
@@ -22,7 +21,6 @@ module Hermes
       ##
       # The Youtube client to use.
       #
-      # @since  2012-07-18
       # @return [YouTubeIt::Client]
       #
       CLIENT = YouTubeIt::Client.new
@@ -31,7 +29,6 @@ module Hermes
       # Array of domain names to use for determining if a URL is a regular URL
       # or a Youtube URL.
       #
-      # @since  2012-07-18
       # @return [Array]
       #
       YOUTUBE_HOSTS = [
@@ -44,7 +41,6 @@ module Hermes
       ##
       # Array of URI protocols to extract.
       #
-      # @since  2012-07-21
       # @return [Array]
       #
       SCHEMES = ['http', 'https']
@@ -52,7 +48,6 @@ module Hermes
       ##
       # Retrieves the first video for the given search query.
       #
-      # @since 2012-07-09
       # @param [Cinch::Message] message
       # @param [String] query The search query to run.
       #
@@ -70,7 +65,6 @@ module Hermes
       # Retrieves the description of a Youtube video whenever a Youtube URL is
       # pasted into a channel.
       #
-      # @since 2012-07-18
       # @param [Cinch::Message] message
       #
       def listen(message)
@@ -103,7 +97,6 @@ module Hermes
       ##
       # Returns the description of a Youtube movie.
       #
-      # @since 2012-07-18
       # @param [YouTubeIt::Model::Video] video The video for which to generate
       #  a description.
       # @param [TrueClass|FalseClass] include_url When set to true the URL to

@@ -6,13 +6,11 @@ module Hermes
     # Helper module for working with URLs. This helper makes it easy to extract
     # URL titles, shorten URLs and perform other operations using URLs.
     #
-    # @since 2012-07-06
     #
     module URL
       ##
       # The URL of the is.gd API.
       #
-      # @since  2012-07-06
       # @return [String]
       #
       IS_GD_URL = 'http://is.gd/create.php'
@@ -21,7 +19,6 @@ module Hermes
       # Extracts the title of a URL. If the response page is a non HTML page
       # nil is returned instead of the title.
       #
-      # @since  2012-07-06
       # @param  [String] url The URL for which to extract the title.
       # @return [String]
       #
@@ -48,7 +45,6 @@ module Hermes
       ##
       # Shortens a URL and returns the short version.
       #
-      # @since  2012-07-06
       # @param  [String] url The URL to shorten.
       # @return [String]
       # @raise  [Faraday::Error::ClientError] Raised when the URL could not be

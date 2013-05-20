@@ -5,7 +5,6 @@ module Hermes
     # yells at users for posting the same URL multiple times in a short
     # timespan.
     #
-    # @since 2012-07-06
     #
     class URL
       include Cinch::Plugin
@@ -17,7 +16,6 @@ module Hermes
       ##
       # Array of hostnames to ignore.
       #
-      # @since  2012-07-18
       # @return [Array]
       #
       IGNORE = ['youtube.com', 'youtu.be', 'www.youtube.com', 'www.youtu.be']
@@ -25,7 +23,6 @@ module Hermes
       ##
       # Array of URL schemes that should be extracted.
       #
-      # @since  2012-07-19
       # @return [Array]
       #
       SCHEMES = ['http', 'https']
@@ -33,7 +30,6 @@ module Hermes
       ##
       # The minimum length of a URL before a short URL should be created.
       #
-      # @since  2012-07-22
       # @return [Fixnum]
       #
       SHORTEN_LENGTH = 45
@@ -42,7 +38,6 @@ module Hermes
       # Retrieves the title of the URL, shortens the URL (if needed) and yells
       # at users if the URL has already been posted.
       #
-      # @since 2012-07-06
       # @param [Cinch::Message] message
       #
       def listen(message)
@@ -94,7 +89,6 @@ module Hermes
       # Retrieves the title of the URL, shortens the URL and stores all this
       # data in the database.
       #
-      # @since  2012-07-06
       # @param  [Cinch::Message] message
       # @param  [String] url The URL to store.
       # @return [Hermes::Model::URL]
@@ -121,7 +115,6 @@ module Hermes
       ##
       # Displays the title and optionally the short URL of a posted URL.
       #
-      # @since 2012-07-06
       # @param [Cinch::Message] message
       # @param [Hermes::Model::URL] row The URL object for which to display the
       #  title and short URL.

@@ -3,7 +3,6 @@ module Hermes
     ##
     # Model used for storing quotes of users in particular channels.
     #
-    # @since 2012-07-05
     #
     class Quote < Sequel::Model
       plugin :timestamps, :created => :created_at, :updated => :updated_at
@@ -11,7 +10,6 @@ module Hermes
       ##
       # Validates the instance before creating or saving a record.
       #
-      # @since 2012-07-05
       #
       def validate
         validates_presence([:nick, :author_nick, :channel, :quote])

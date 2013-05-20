@@ -3,7 +3,6 @@ module Hermes
     ##
     # Plugin that allows users to retrieve definitions from Urban Dictionary.
     #
-    # @since 2012-06-30
     #
     class UrbanDictionary
       include Cinch::Plugin
@@ -18,7 +17,6 @@ module Hermes
       ##
       # The URL to send HTTP requests to.
       #
-      # @since  2012-06-30
       # @return [String]
       #
       URL = 'http://api.urbandictionary.com/v0/define'
@@ -26,7 +24,6 @@ module Hermes
       ##
       # Executes the plugin.
       #
-      # @since 2012-06-30
       # @param [Cinch::Message] message
       # @param [String] term The term to look for.
       #

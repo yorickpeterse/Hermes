@@ -4,7 +4,6 @@ module Hermes
     # Plugin that retrieves all the available plugin names and displays them to
     # the user.
     #
-    # @since 2012-06-30
     #
     class Help
       include Cinch::Plugin
@@ -18,7 +17,6 @@ module Hermes
       ##
       # Executes the plugin.
       #
-      # @since 2012-06-30
       # @param [Cinch::Message] message
       #
       def execute(message)

@@ -3,7 +3,6 @@ module Hermes
     ##
     # Plugin for retrieving tweets based on usernames, hash tags or tweet IDs.
     #
-    # @since 2012-07-08
     #
     class Twitter
       include Cinch::Plugin
@@ -19,7 +18,6 @@ module Hermes
       ##
       # Retrieves a tweet.
       #
-      # @since 2012-07-08
       # @param [Cinch::Message] message
       # @param [String] identifier A tweet ID, hash tag or username for which
       #  to retrieve a tweet.
