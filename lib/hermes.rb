@@ -1,7 +1,6 @@
 require 'cgi'
 require 'json'
 require 'uri'
-require 'bundler/setup'
 require 'cinch'
 require 'faraday'
 require 'faraday_middleware'

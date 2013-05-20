@@ -1,4 +1,3 @@
-require 'hermes/plugin/cat/sax_helper'
 require 'hermes/plugin/cat/yorickpeterse'
 require 'hermes/plugin/cat/katylava'
 require 'hermes/plugin/cat/nirix'
