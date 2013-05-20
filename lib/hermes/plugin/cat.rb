@@ -1,7 +1,6 @@
-require 'hermes/plugin/cat/yorickpeterse'
-require 'hermes/plugin/cat/katylava'
-require 'hermes/plugin/cat/nirix'
-require 'time'
+require_relative 'cat/yorickpeterse'
+require_relative 'cat/katylava'
+require_relative 'cat/nirix'
 
 module Hermes
   module Plugin

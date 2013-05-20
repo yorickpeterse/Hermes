@@ -1,11 +1,8 @@
-require 'hermes/sax_parser/url_title'
-
 module Hermes
   module Helper
     ##
     # Helper module for working with URLs. This helper makes it easy to extract
     # URL titles, shorten URLs and perform other operations using URLs.
-    #
     #
     module URL
       ##
@@ -31,15 +28,14 @@ module Hermes
           return
         end
 
-        head       = response.body.split(/<body/)[0]
-        url_parser = Hermes::SAXParser::URLTitle.new
-        parser     = Nokogiri::HTML::SAX::Parser.new(url_parser)
+        document = Nokogiri::HTML(response.body)
+        title    = document.css('head title').text
 
-        parser.parse(head)
-
-        return unless url_parser.title
-
-        return url_parser.title.gsub(/\s{2,}|\n/, ' ').strip
+        if title and !title.empty?
+          return title.gsub(/\s{2,}|\n/, ' ').strip
+        else
+          return
+        end
       end
 
       ##

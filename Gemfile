@@ -11,6 +11,7 @@ gem 'twitter'
 gem 'youtube_it'
 gem 'wunderground'
 gem 'dante'
+gem 'json'
 
 group :production do
   gem 'pg'

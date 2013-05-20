@@ -3,7 +3,6 @@ module Hermes
     ##
     # Model used for storing quotes of users in particular channels.
     #
-    #
     class Quote < Sequel::Model
       plugin :timestamps, :created => :created_at, :updated => :updated_at
 

@@ -1,6 +1,8 @@
 require 'cgi'
-require 'json'
 require 'uri'
+require 'time'
+
+require 'json'
 require 'cinch'
 require 'faraday'
 require 'faraday_middleware'
@@ -10,8 +12,6 @@ require 'sequel'
 require 'twitter'
 require 'youtube_it'
 require 'wunderground'
-
-$:.unshift(File.expand_path('../', __FILE__))
 
 # Load all the helpers and plugins.
 ['helper', 'plugin'].each do |directory|

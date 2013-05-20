@@ -4,7 +4,6 @@ module Hermes
     # Model used for storing and retrieving URLs that have been posted in an
     # IRC channel.
     #
-    #
     class URL < Sequel::Model
       plugin :timestamps, :created => :created_at, :updated => :updated_at
 

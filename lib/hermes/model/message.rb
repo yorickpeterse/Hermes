@@ -3,7 +3,6 @@ module Hermes
     ##
     # Model used for storing messages that have to be sent to a user.
     #
-    #
     class Message < Sequel::Model
       plugin :timestamps, :created => :created_at
 

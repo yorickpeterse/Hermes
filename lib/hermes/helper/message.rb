@@ -3,7 +3,6 @@ module Hermes
     ##
     # Helper for dealing with IRC messages.
     #
-    #
     module Message
       ##
       # Returns true if the message is a valid plugin command.

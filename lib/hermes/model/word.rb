@@ -3,7 +3,6 @@ module Hermes
     ##
     # Model used for storing words and the text associated with these words.
     #
-    #
     class Word < Sequel::Model
       plugin :timestamps, :created => :created_at, :updated => :updated_at
 

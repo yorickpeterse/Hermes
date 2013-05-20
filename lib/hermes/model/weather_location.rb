@@ -3,7 +3,6 @@ module Hermes
     ##
     # Model used for storing the weather locations of various users.
     #
-    #
     class WeatherLocation < Sequel::Model
       plugin :timestamps, :created => :created_at, :updated => :updated_at
 
