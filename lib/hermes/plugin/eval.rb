@@ -67,7 +67,7 @@ module Hermes
           response, json = Hermes.http.get_json(url + '.json')
           output         = json['output'].split("\n")[0]
 
-          message.reply("=> #{output} | #{url}", true)
+          message.reply("=> #{output} | #{url}")
         else
           message.reply(
             "The eval.in server shat itself. HTTP status: #{response.code}",
