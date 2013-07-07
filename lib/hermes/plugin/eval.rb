@@ -15,7 +15,7 @@ module Hermes
       #
       # @return [String]
       #
-      URL = 'http://eval.in/'
+      URL = 'https://eval.in/'
 
       ##
       # Shortcuts for common languages.
