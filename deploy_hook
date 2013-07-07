@@ -1,16 +1,17 @@
 #!/usr/bin/env bash
 set -e
 
-pid=/var/run/hermes/hermes.pid
-log=/var/log/hermes.log
+PID=/var/run/hermes/hermes.pid
+LOG=/var/log/hermes.log
+RVM=/usr/local/rvm/bin/rvm
+RUBY="1.9.3"
 
 echo 'Updating codebase...'
 
-bundle install --deployment
-
-bundle exec rake db:migrate --trace
+$RVM $RUBY do bundle install --deployment
+$RVM $RUBY do bundle exec rake db:migrate --trace
 
 echo 'Restarting daemon...'
 
-bundle exec ruby ./bin/hermes -k -P $pid -l $log
-bundle exec ruby ./bin/hermes -d -P $pid -l $log
+$RVM $RUBY do bundle exec ruby ./bin/hermes -k -P $PID -l $LOG
+$RVM $RUBY do bundle exec ruby ./bin/hermes -d -P $PID -l $LOG
