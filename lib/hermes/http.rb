@@ -17,6 +17,12 @@ module Hermes
       @client.send_timeout    = TIMEOUT
       @client.connect_timeout = TIMEOUT
       @client.receive_timeout = TIMEOUT
+
+      # This is dumb but works around issues with domains having borken SSL
+      # setups (e.g. eval.in). In theory HTTPClient should support SNI (to work
+      # around most of these issues) but I can't figure out how to enable
+      # it/how it works.
+      @client.ssl_config.verify_mode = OpenSSL::SSL::VERIFY_NONE
     end
 
     ##
