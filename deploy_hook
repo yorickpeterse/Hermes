@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
 set -e
 
+pid=/var/run/hermes/hermes.pid
+log=/var/log/hermes.log
+
 echo 'Updating codebase...'
 
 bundle install --deployment
@@ -9,5 +12,5 @@ bundle exec rake db:migrate --trace
 
 echo 'Restarting daemon...'
 
-bundle exec ruby ./bin/hermes -k
-bundle exec ruby ./bin/hermes -d
+bundle exec ruby ./bin/hermes -k -P $pid -l $log
+bundle exec ruby ./bin/hermes -d -P $pid -l $log
