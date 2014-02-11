@@ -23,11 +23,11 @@ module Hermes
       def execute(message, identifier)
         begin
           if identifier =~ /^\d+$/
-            tweet = ::Twitter.status(identifier)
+            tweet = config[:client].status(identifier)
           elsif identifier[0] == '#'
-            tweet = ::Twitter.search(identifier, :rpp => 1).results[0]
+            tweet = config[:client].search(identifier, :rpp => 1).results[0]
           else
-            tweet = ::Twitter.user_timeline(identifier, :count => 1)[0]
+            tweet = config[:client].user_timeline(identifier, :count => 1)[0]
           end
         rescue => e
           message.reply("Failed to retrieve the tweet: #{e.message}", true)

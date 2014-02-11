@@ -2,7 +2,6 @@ require 'cgi'
 require 'uri'
 require 'time'
 
-require 'json'
 require 'cinch'
 require 'httpclient'
 require 'nokogiri'
@@ -11,6 +10,7 @@ require 'sequel'
 require 'twitter'
 require 'youtube_it'
 require 'wunderground'
+require 'json'
 
 require_relative 'hermes/http'
 
@@ -49,22 +49,9 @@ module Hermes
   #
   # @return [Array]
   #
-  DEFAULT_PLUGINS = [
-    Hermes::Plugin::Cat,
-    Hermes::Plugin::Down,
-    Hermes::Plugin::UrbanDictionary,
-    Hermes::Plugin::Google,
-    Hermes::Plugin::Help,
-    Hermes::Plugin::Remember,
-    Hermes::Plugin::Quote,
-    Hermes::Plugin::Tell,
-    Hermes::Plugin::URL,
-    Hermes::Plugin::Weather,
-    Hermes::Plugin::Twitter,
-    Hermes::Plugin::Wikipedia,
-    Hermes::Plugin::Youtube,
-    Hermes::Plugin::Eval
-  ]
+  DEFAULT_PLUGINS = Hermes::Plugin.constants.map do |name|
+    Hermes::Plugin.const_get(name)
+  end
 
   class << self
     ##
