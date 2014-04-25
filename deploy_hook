@@ -3,7 +3,7 @@ set -e
 
 PID=/var/run/hermes/hermes.pid
 LOG=/var/log/hermes/hermes.log
-CHRUBY=/usr/local/bin/chruby-exec
+CHRUBY='/usr/local/bin/chruby-exec'
 RUBY=$(cat .ruby-version)
 
 echo 'Updating codebase...'
