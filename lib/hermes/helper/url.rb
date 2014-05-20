@@ -32,7 +32,7 @@ module Hermes
         title    = document.css('head title').text
 
         if title and !title.empty?
-          return title.gsub(/\s{2,}|\n/, ' ').strip
+          return title.gsub(/\s{2,}|\n/, ' ').strip[0..80]
         else
           return
         end
