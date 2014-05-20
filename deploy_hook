@@ -1,17 +1,21 @@
 #!/usr/bin/env bash
 set -e
 
+source /usr/local/share/chruby/chruby.sh
+source /usr/local/share/chruby/auto.sh
+
 PID=/var/run/hermes/hermes.pid
 LOG=/var/log/hermes/hermes.log
-CHRUBY='/usr/local/bin/chruby-exec'
 RUBY=$(cat .ruby-version)
+
+chruby $RUBY
 
 echo 'Updating codebase...'
 
-$CHRUBY $RUBY -- bundle install --deployment
-$CHRUBY $RUBY -- bundle exec rake db:migrate --trace
+bundle install --deployment
+bundle exec rake db:migrate --trace
 
 echo 'Restarting daemon...'
 
-$CHRUBY $RUBY -- bundle exec ruby ./bin/hermes -k -P $PID -l $LOG
-$CHRUBY $RUBY -- bundle exec ruby ./bin/hermes -d -P $PID -l $LOG
+bundle exec ruby ./bin/hermes -k -P $PID -l $LOG
+bundle exec ruby ./bin/hermes -d -P $PID -l $LOG
