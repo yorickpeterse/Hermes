@@ -76,7 +76,7 @@ module Hermes
               display_title(message, save_url(message, url), false)
             rescue => e
               error(e.message + "\n" + e.backtrace.join("\n"))
-              message.reply("Failed to process the URL: #{e.message}")
+              message.reply("Failed to process the URL")
             end
           end
         end
