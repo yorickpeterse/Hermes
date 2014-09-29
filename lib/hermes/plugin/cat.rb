@@ -1,6 +1,7 @@
 require_relative 'cat/yorickpeterse'
 require_relative 'cat/katylava'
 require_relative 'cat/nirix'
+require_relative 'cat/jwa'
 
 module Hermes
   module Plugin
@@ -24,6 +25,7 @@ module Hermes
         'yorickpeterse' => Hermes::Plugin::Cat::Yorickpeterse,
         'katylava'      => Hermes::Plugin::Cat::Katylava,
         'nirix'         => Hermes::Plugin::Cat::Nirix
+        'jwa'           => Hermes::Plugin::Cat::Jwa
       }
 
       match(/cat\s+(\S+)/)

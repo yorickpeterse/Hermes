@@ -30,7 +30,7 @@ module Hermes
 
           return url, title, date
         end
-      end # Nirix
+      end # Jwa
     end # Cat
   end # Plugin
 end # Hermes
