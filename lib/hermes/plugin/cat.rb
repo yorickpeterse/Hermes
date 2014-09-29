@@ -24,8 +24,8 @@ module Hermes
       FEEDS = {
         'yorickpeterse' => Hermes::Plugin::Cat::Yorickpeterse,
         'katylava'      => Hermes::Plugin::Cat::Katylava,
-        'nirix'         => Hermes::Plugin::Cat::Nirix
-        'jwa'           => Hermes::Plugin::Cat::Jwa
+        'nirix'         => Hermes::Plugin::Cat::Nirix,
+        'jwa'           => Hermes::Plugin::Cat::Jwa,
       }
 
       match(/cat\s+(\S+)/)
